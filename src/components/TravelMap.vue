@@ -1,7 +1,7 @@
 <template>
     <GoogleMapLoader
         :mapConfig='mapConfig'
-        apiKey='APIKEY'    
+        apiKey='APIKEY '    
     >
     <template slot-scope="{google, map}">
         {{map}}
