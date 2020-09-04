@@ -1,20 +1,20 @@
 <template>
   <div class="home">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <GoogleMapLoader/>
+    <sample/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-import GoogleMapLoader from '@/components/GoogleMapLoader.vue'
+import sample from '@/components/sample.vue'
 
 export default {
   name: 'Home',
   components: {
     // HelloWorld,
-    GoogleMapLoader
+    sample
   }
 }
 </script>
