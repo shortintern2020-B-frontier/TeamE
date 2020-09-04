@@ -10,8 +10,8 @@ header {
   align-items: center;
   background-color: white;
   width: 100%;
-  height: 80px;
-  border-bottom: solid 1px gray;
+  height: 72px;
+  border-bottom: solid 1px #e3e3e3;
 }
 
 div {
