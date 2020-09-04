@@ -2,7 +2,9 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <head/>
+    <sample></sample>
   </div>
+  
 </template>
 
 <script>
