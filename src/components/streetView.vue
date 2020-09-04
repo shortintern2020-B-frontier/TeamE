@@ -1,3 +1,4 @@
+// 2020/09/04 Ryo Omae
 <template>
   <!-- <div id="map"></div> -->
   <div>

@@ -16,6 +16,7 @@ export default {
   name: 'Home',
   components: {
     // HelloWorld,
+    // 2020/09/04 Ryo Omae
     streetView
   }
 }
