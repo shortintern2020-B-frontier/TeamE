@@ -6,19 +6,21 @@
 
 <style type="text/css">
 header {
-  background-color: red;
+  display: flex;
+  align-items: center;
+  background-color: white;
   width: 100%;
-  height: 120px;
+  height: 80px;
+  border-bottom: solid 1px gray;
 }
 
 div {
-  text-align: center;
-  padding-left: 5%;
-  font-size: 24px;
+  text-align: left;
+  padding-left: 24px;
+  font-size: 36px;
   color: black;
 }
 </style>
-
 
 
 
