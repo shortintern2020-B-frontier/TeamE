@@ -1,14 +1,19 @@
 <template>
-<div class="detail">
-    <navbar/>
+  <div class="detail">
+    <navbar />
+    <detailHero/>
     <joinButton />
     <purchasedList/>
 </div>
 </template>
 
 <script>
-import navbar from "@/components/navbar.vue";
+// @ is an alias to /src
+// import HelloWorld from '@/components/HelloWorld.vue'
+
 import joinButton from "@/components/joinButton.vue";
+import navbar from "@/components/navbar.vue";
+import detailHero from "@/components/detailHero.vue";
 import purchasedList from '@/components/purchasedList.vue';
 
 export default {
@@ -17,6 +22,7 @@ export default {
     navbar,
     joinButton,
     purchasedList,
+    detailHero
   }
 }
 </script>
