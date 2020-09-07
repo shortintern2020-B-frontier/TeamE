@@ -33,7 +33,7 @@
             </v-list-item>
 
             <v-card-actions>
-            <v-btn class="ml-6">楽天市場で購入</v-btn>
+            <v-btn class="ml-6" :href="product.src" target="_blank">楽天市場で購入</v-btn>
             </v-card-actions>
         </v-card>
     </v-container>
