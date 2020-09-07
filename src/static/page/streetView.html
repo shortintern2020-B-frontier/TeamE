@@ -5,7 +5,7 @@
     <title>Overlays Within Street View</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqchniiuahLqMZP9-WOdvo_w5pMQ6uGhQ"
       defer
     ></script>
 
@@ -61,12 +61,18 @@
       var username = params.get('username');
       var start_lat = params.get('start_lat');
       var start_lng = params.get('start_lng');
+      
+      // テスト用
+      roomid = '-MGa9n3IJ3iSSfMQ0vIl';
+      start_lat = 135;
+      start_lng = 35;
       // ここまで
 
+      
       function initMap() {
         const astorPlace = {
-            lat: start_lat,
-            lng: start_lng
+            lat: 135,
+            lng: 35
         }; // Set up the map
 
         map = new google.maps.Map(document.getElementById('map'), {
@@ -100,6 +106,8 @@
         );
         panorama.setVisible(true);
       }
+      
+      initMap();
 
     </script>
   </head>
@@ -156,7 +164,35 @@
 
 <!--処理系は以下に書く-->
 <script>
-//userList = getUserFromRoom //ToDo: googlemapsにタグの更新 
+  // Ryo Omae
+  var database = firebase.database();
+  var roomRef = database.ref('room/'+roomid);
+  var userData
+  roomRef.on('value').then(function(snapshot){
+    userData = snapshot.val();
+    console.log('userdata', userData);
+    var userKeyList = Object.keys(userData);
+    userKeyList = userKeyList.filter(n => n != "roomid");
+    // console.log(userKeyList);
+    var userList=[];
+
+    deleteMarkers(user_markers);
+
+    userKeyList.forEach(element => {
+      marker = new google.maps.Marker({
+          position: {
+            lat: userList[element]['lat'],
+            lng: userList[element]['lng']
+          },
+          map,
+          icon:
+            "../../img/tokyo_2021.png",
+        });
+      user_markers.push(marker);
+    });
+    setMapOnAll(map, user_markers);
+    })
+ //ToDo: googlemapsにタグの更新 
 //contentList = getContent
 //Meisho Kanaomi　2020/09/04
 for(let i=0; i<markers.length; i++){
