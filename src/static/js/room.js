@@ -2,6 +2,10 @@
 // Ryo Omae
 
 <script>
+    function makeContent(database, contentData) {
+        var newContentRef = database.ref('')
+    }
+
     {/* input: ref to database
     output: roomid */}
     function makeRoom(database) {
@@ -36,6 +40,7 @@
 
     }
 
+    
     function getUserFromRoom(database, roomId){
         var roomRef = database.ref('room/'+roomId);
         let userList
@@ -43,7 +48,8 @@
             userList = snapshot.val();
 
         })
-        return userList;
+        var userKeyList = Object.keys(userList);
+        userKeyList = userKeyList.filter(n => n != "roomid");
     }
     export makeRoom;
     export addUserToRoom;
