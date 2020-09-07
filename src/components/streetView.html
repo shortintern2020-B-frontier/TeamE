@@ -49,6 +49,7 @@
       let markers=[];
       let map;
       var PinIsVisible=true;
+      var response;
 
       function initMap() {
         const astorPlace = {
@@ -69,21 +70,22 @@
           },
           map,
           icon:
-            "img/tokyo_2021.png",
+            "img/楽天パンダ.png",
           title: "Cafe",
-          clickable: true,
+          url:'https://www.rakuten.co.jp/'
         });
         markers.push(cafeMarker);
 
         const bankMarker = new google.maps.Marker({
           position: {
             lat: 42.3456,
-            lng: -71.098
+            lng: -71.098,
           },
           map,
           icon:
-            "img/tokyo_2021.png",
+            "img/楽天パンダ.png",
           title: "Bank",
+          url:'https://www.rakuten.co.jp/'
         });
         markers.push(bankMarker);
 
@@ -94,15 +96,25 @@
           },
           map,
           icon:
-            "img/tokyo_2021.png",
+            "img/楽天パンダ.png",
           title: "Bus Stop",
+          url:'https://www.rakuten.co.jp/'
         }); // We get the map's default panorama and set up some defaults.
         // Note that we don't yet set it visible.
         markers.push(busMarker);
 
+
+        //Meisho Kanaomi
         for(let i=0; i<markers.length; i++){
             console.log(markers[i]);
-        }
+            google.maps.event.addListener(markers[i], 'click', (function(url){
+        return window.open(markers[i].url);}))}
+        
+        
+        
+        //function(){ location.href = url; };
+        //})(markers[i].url));
+        //}
 
         panorama = map.getStreetView();
         panorama.setPosition(astorPlace);
@@ -114,6 +126,12 @@
           }
         );
         panorama.setVisible(true);
+
+        //Meisho Kanaomi
+        var tmp_lat = panorama.getPosition().lat
+        var tmp_log = panorama.getPosition().log
+        console.log(tmp_lat)
+        console.log(tmp_log)
       }
 
       function toggleStreetView() {
