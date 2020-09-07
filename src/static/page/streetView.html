@@ -5,7 +5,7 @@
     <title>Overlays Within Street View</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqchniiuahLqMZP9-WOdvo_w5pMQ6uGhQ"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcUv44NbZm-6GfoysiQ9fx2F_R7Z4Q6zI&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
      <!-- 2020/09/04 Ryo Omae -->
@@ -201,7 +201,7 @@
 <script>
   // Ryo Omae
   var database = firebase.database();
-  var roomRef = database.ref('room/'+roomid);
+  var roomRef = database.ref('room/'+roomId);
   roomRef.on('value').then(function(snapshot){
     userData = snapshot.val();
     console.log('userdata', userData);
