@@ -1,3 +1,5 @@
+<!-- @author ISSEI MIYAMOTO -->
+
 <template>
   <header>
     <router-link to="/">
