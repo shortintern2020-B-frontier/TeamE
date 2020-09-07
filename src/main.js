@@ -2,10 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false
 
-// 2020/09/04 Ryo Omae
+
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'APIKEY',
@@ -17,5 +18,6 @@ Vue.use(VueGoogleMaps, {
 
 new Vue({
   router,
+  vuetify,
   render: h => h(App)
 }).$mount('#app')

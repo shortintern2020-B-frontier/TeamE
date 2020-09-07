@@ -1,23 +1,27 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <head/>
-    <streetView></streetView>
-  </div>
-  
+
+<div class="home">
+    <navbar/>
+    <homeHero/>
+    <packages/>
+</div>
 </template>
 
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-import streetView from '@/components/streetView.vue'
+
+import navbar from "@/components/navbar.vue";
+import homeHero from "@/components/homeHero.vue";
+import packages from "@/components/packages.vue";
+
 
 export default {
   name: 'Home',
   components: {
-    // HelloWorld,
-    // 2020/09/04 Ryo Omae
-    streetView
+    navbar,
+    homeHero,
+    packages
   }
 }
 </script>
