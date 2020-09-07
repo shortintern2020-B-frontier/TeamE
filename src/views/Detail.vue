@@ -31,7 +31,7 @@ export default {
   components: {
     navbar,
     joinButton,
-    packageDetail
+    packageDetail,
     purchasedList,
     detailHero
   }
