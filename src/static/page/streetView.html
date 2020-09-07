@@ -70,34 +70,6 @@
         streetViewControl: true,
         });
 
-        
-
-        const cafeMarker = new google.maps.Marker({
-          position: {
-            lat: 42.3456,
-            lng: -71.0984
-          },
-          map,
-          icon:
-            "../img/tokyo_2021.png",
-          title: "Cafe",
-          url:'https://www.rakuten.co.jp/'
-        });
-        markers.push(cafeMarker);
-
-        const bankMarker = new google.maps.Marker({
-          position: {
-            lat: 42.3456,
-            lng: -71.098,
-          },
-          map,
-          icon:
-          "../img/tokyo_2021.png",
-          title: "Bank",
-          url:'https://www.rakuten.co.jp/'
-        });
-        markers.push(bankMarker);
-
         const busMarker = new google.maps.Marker({
           position: {
             lat: 42.345,
@@ -130,66 +102,6 @@
           }
         );
         panorama.setVisible(true);
-
-        //Meisho Kanaomi 2020/09/07
-        panorama.addListener("position_changed", () => {
-        const positionCell = document.getElementById("position-cell");
-        const tmp_position = panorama.getPosition();
-        const tmp_lat = tmp_position.lat()
-        const tmp_lng = tmp_position.lng()
-
-        console.log(tmp_lat)
-        });
-      }
-
-      function toggleStreetView() {
-        const toggle = panorama.getVisible();
-        
-        if (toggle == false) {
-          panorama.setVisible(true);
-          showMarkers();
-        } else {
-          panorama.setVisible(false);
-          hideMarkers();
-        }
-      }
-
-      function togglePins() {
-        const toggle = panorama.getVisible();
-
-        //パノラマ状態じゃないときは変更しない
-        if(toggle == false){
-            return;
-        }
-
-        if (PinIsVisible == false) {
-          showMarkers();
-          PinIsVisible = true;
-        } else {
-          hideMarkers();
-          PinIsVisible = false;
-        }
-      }
-
-      function setMapOnAll(map){
-          for(let i=0; i<markers.length; i++){
-              markers[i].setMap(map);
-          }
-      }
-
-      //markerを非表示にする
-      function hideMarkers(){
-          setMapOnAll(null);
-      }
-      //markerを表示する
-      function showMarkers(){
-          setMapOnAll(map);
-      }
-
-      //markerを消去する
-      function deleteMarkers(){ 
-          hideMarkers();
-          markers=[];
       }
 
     </script>
@@ -240,20 +152,7 @@
 </script>
 
 <script>
-    // Ryo Omae 2020/09/04
-    var database = firebase.database();
-
-    var contentData;
-    var contentTempData;
-    var contentRef = database.ref('content/');
-    contentRef.on('value', function(snapshot) {
-        contentData = snapshot.val()
-    })
-
-    contentRef.once('value').then(function(snapshot) {
-        contentTempData = snapshot.val()
-    })
-    console.log(contentData);
+      //実行処理はここに書く
 
     
 </script>
