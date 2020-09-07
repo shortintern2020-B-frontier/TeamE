@@ -102,10 +102,10 @@
       
       function initMap() {
         const astorPlace = {
-            lat: 135,
-            lng: 35
+            lat: start_lat,
+            lng: start_lng
         }; // Set up the map
-
+        console.log(astorPlace)
         map = new google.maps.Map(document.getElementById('map'), {
         center: astorPlace,
         zoom: 18,
@@ -139,6 +139,7 @@
         panorama.setVisible(true);
 
         //Meisho.K 2020/09/07
+        //座標の移動に応じてdbに座標を更新する処理
         panorama.addListener("position_changed", () => {
         const tmp_position = panorama.getPosition();
         const tmp_lat = tmp_position.lat()
@@ -153,7 +154,6 @@
         })
     });
       }
-      initMap();
       
 
     </script>
@@ -182,8 +182,7 @@
 
 <!-- 2020/09/07 Ryota Watanabe-->
 <script>
-  var database = firebase.database();
-  var contentRef=getContent(database);
+  var contentRef=getContent(DataBase);
   var contentData;
   var contentTempData;
   //DBが更新されたときに呼び出される(更新処理に使う)
@@ -200,8 +199,7 @@
 <!--処理系は以下に書く-->
 <script>
   // Ryo Omae
-  var database = firebase.database();
-  var roomRef = database.ref('room/'+roomId);
+  var roomRef = DataBase.ref('room/'+roomId);
   roomRef.on('value').then(function(snapshot){
     userData = snapshot.val();
     console.log('userdata', userData);
@@ -231,10 +229,11 @@
     //ToDo: googlemapsにタグの更新 
     //contentList = getContent
     //Meisho Kanaomi　2020/09/04
-    for(let i=0; i<markers.length; i++){
-                console.log(markers[i]);
-                google.maps.event.addListener(markers[i], 'click', (function(url){
-            return window.open(markers[i].url);}))}
+    //urlを埋め込む
+    for(let i=0; i<content_markers.length; i++){
+                console.log(content_markers[i]);
+                google.maps.event.addListener(content_markers[i], 'click', (function(url){
+            return window.open(content_markers[i].url);}))}
     //updatePosition(database, name, roomId, userId)
 
 </script>
