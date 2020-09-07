@@ -1,3 +1,5 @@
+//watanabe 2020/09/04
+//Meisho.K 2020/09/07
 function toggleStreetView() {
     const toggle = panorama.getVisible();
     
