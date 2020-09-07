@@ -37,6 +37,11 @@ export default {
 </script>
 
 <style lang="css">
+.detail {
+  padding: 0;
+  margin: 0;
+}
+
 .package-container {
   display: flex;
 }

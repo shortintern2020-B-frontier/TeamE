@@ -1,10 +1,9 @@
 <template>
-
-<div class="home">
-    <navbar/>
-    <homeHero/>
-    <packages/>
-</div>
+  <div class="home">
+    <navbar />
+    <homeHero />
+    <packages />
+  </div>
 </template>
 
 <script>
@@ -15,13 +14,19 @@ import navbar from "@/components/navbar.vue";
 import homeHero from "@/components/homeHero.vue";
 import packages from "@/components/packages.vue";
 
-
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     navbar,
     homeHero,
     packages
   }
-}
+};
 </script>
+
+<style lang="css">
+.home {
+  padding: 0;
+  margin: 0;
+}
+</style>
