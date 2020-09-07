@@ -1,10 +1,10 @@
 <template>
-<div class="home">
-  <navBar></navBar>
-  <img alt="Vue logo" src="../assets/logo.png" />
-  <head />
-  <sample></sample>
-</div>
+  <div class="home">
+    <navBar />
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <head />
+    <sample></sample>
+  </div>
 </template>
 
 <script>
