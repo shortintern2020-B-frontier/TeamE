@@ -28,23 +28,23 @@ function togglePins() {
     }
   }
 
-function setMapOnAll(map){
+function setMapOnAll(map, markers){
     for(let i=0; i<markers.length; i++){
         markers[i].setMap(map);
     }
 }
 
 //markerを非表示にする
-function hideMarkers(){
-    setMapOnAll(null);
+function hideMarkers(markers){
+    setMapOnAll(null, markers);
 }
 //markerを表示する
-function showMarkers(){
-    setMapOnAll(map);
+function showMarkers(markers){
+    setMapOnAll(map, markers);
 }
 
 //markerを消去する
-function deleteMarkers(){ 
+function deleteMarkers(markers){ 
     hideMarkers();
     markers=[];
 }

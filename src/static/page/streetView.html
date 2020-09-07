@@ -48,7 +48,8 @@
       "use strict";
 
       let panorama;
-      let markers=[];
+      let user_markers=[];
+      let content_markers = [];
       let map;
       var PinIsVisible=true;
       var response;
@@ -88,14 +89,6 @@
         }); // We get the map's default panorama and set up some defaults.
         // Note that we don't yet set it visible.
         markers.push(busMarker);
-
-
-        //Meisho Kanaomi　2020/09/04
-        for(let i=0; i<markers.length; i++){
-            console.log(markers[i]);
-            google.maps.event.addListener(markers[i], 'click', (function(url){
-        return window.open(markers[i].url);}))}
-
 
         panorama = map.getStreetView();
         panorama.setPosition(astorPlace);
@@ -162,6 +155,17 @@
 <script src = "../js/user.js"></script>
 
 
-<!--処理系は以下に書く-- >
+<!--処理系は以下に書く-->
+<script>
+//userList = getUserFromRoom //ToDo: googlemapsにタグの更新 
+//contentList = getContent
+//Meisho Kanaomi　2020/09/04
+for(let i=0; i<markers.length; i++){
+            console.log(markers[i]);
+            google.maps.event.addListener(markers[i], 'click', (function(url){
+        return window.open(markers[i].url);}))}
+//updatePosition(database, name, roomId, userId)
+
+</script>
 </body>
 </html>

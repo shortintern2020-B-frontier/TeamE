@@ -33,25 +33,5 @@ function addUserToRoom(database, roomId, name){
 function removeUserFromRoom(database, roomId, userId){
     var roomRef = database.ref('room/'+roomId+'/'+userId);
     roomRef.remove();
-
 }
 
-
-function getUserFromRoom(database, roomId){
-    var roomRef = database.ref('room/'+roomId);
-    let userData
-    roomRef.once('value').then(function(snapshot){
-        userData = snapshot.val();
-        // console.log('userdata', userData);
-        var userKeyList = Object.keys(userData);
-        userKeyList = userKeyList.filter(n => n != "roomid");
-        // console.log(userKeyList);
-        var userList=[];
-        userKeyList.forEach(element => {
-            userList.push(userData[element]);
-        });
-        return userList;
-
-    })
-    
-}
