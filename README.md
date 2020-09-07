@@ -22,3 +22,24 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Firebase setup  
+Install firebase tools
+```
+npm i -g firebase-tools
+```
+
+### Login to your account  
+```
+firebase login
+```
+
+### Deploy Project  
+Deploy dist directory.  
+Please build the project first.
+
+```
+firebase deploy
+```
+
+

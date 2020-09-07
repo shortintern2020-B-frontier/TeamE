@@ -9,8 +9,12 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "firebase-tools": "^8.10.0",
+    "google-maps-api-loader": "^1.1.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
+    "vue2-google-maps": "^0.10.7",
+    "vue2-googlemap": "^1.1.4",
     "vuetify": "^2.3.10"
   },
   "devDependencies": {
