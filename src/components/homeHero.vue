@@ -1,3 +1,7 @@
+/**
+ * @author Kota Yukawa
+ */
+ 
 <template>
   <v-parallax dark v-bind:src="assetsImage">
     <v-container fluid>
