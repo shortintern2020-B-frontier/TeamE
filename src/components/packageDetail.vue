@@ -1,3 +1,5 @@
+<!-- @author ISSEI MIYAMOTO -->
+
 <template>
   <div class="package-detail">
     <div class="title-container">
@@ -6,8 +8,6 @@
     <div class="detail-container">
       <h6>体験できること</h6>
       <p>{{ contentAbout }}</p>
-
-      
     </div>
   </div>
 </template>
