@@ -43,13 +43,21 @@
     
     function getUserFromRoom(database, roomId){
         var roomRef = database.ref('room/'+roomId);
-        let userList
+        let userData
         roomRef.once('value').then(function(snapshot){
-            userList = snapshot.val();
+            userData = snapshot.val();
+            // console.log('userdata', userData);
+            var userKeyList = Object.keys(userData);
+            userKeyList = userKeyList.filter(n => n != "roomid");
+            // console.log(userKeyList);
+            var userList=[];
+            userKeyList.forEach(element => {
+                userList.push(userData[element]);
+            });
+            return userList;
 
         })
-        var userKeyList = Object.keys(userList);
-        userKeyList = userKeyList.filter(n => n != "roomid");
+        
     }
     export makeRoom;
     export addUserToRoom;
