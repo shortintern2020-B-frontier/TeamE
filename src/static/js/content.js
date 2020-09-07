@@ -3,10 +3,10 @@
 
 // コンテンツ取得処理
 // lng, lat, title, url
-function getContent(database){
-    
+function getContentFromDatabase(database){
+
 }
 
-function makeContent(database, contentData) {
+function addContentToDatabase(database, contentData) {
     var newContentRef = database.ref('')
 }
