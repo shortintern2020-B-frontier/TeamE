@@ -5,7 +5,7 @@
     <title>Overlays Within Street View</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=__APIKEY__&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqchniiuahLqMZP9-WOdvo_w5pMQ6uGhQ&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
 
@@ -63,6 +63,8 @@
         streetViewControl: true,
         });
 
+        
+
         const cafeMarker = new google.maps.Marker({
           position: {
             lat: 42.3456,
@@ -70,7 +72,7 @@
           },
           map,
           icon:
-            "img/楽天パンダ.png",
+            "../img/tokyo_2021.png",
           title: "Cafe",
           url:'https://www.rakuten.co.jp/'
         });
@@ -83,7 +85,7 @@
           },
           map,
           icon:
-            "img/楽天パンダ.png",
+          "../img/tokyo_2021.png",
           title: "Bank",
           url:'https://www.rakuten.co.jp/'
         });
@@ -96,7 +98,7 @@
           },
           map,
           icon:
-            "img/楽天パンダ.png",
+            "../img/tokyo_2021.png",
           title: "Bus Stop",
           url:'https://www.rakuten.co.jp/'
         }); // We get the map's default panorama and set up some defaults.
@@ -128,15 +130,19 @@
         panorama.setVisible(true);
 
         //Meisho Kanaomi
-        var tmp_lat = panorama.getPosition().lat
-        var tmp_log = panorama.getPosition().log
+        panorama.addListener("position_changed", () => {
+        const positionCell = document.getElementById("position-cell");
+        const tmp_position = panorama.getPosition();
+        const tmp_lat = tmp_position.lat()
+        const tmp_lng = tmp_position.lng()
+
         console.log(tmp_lat)
-        console.log(tmp_log)
+        });
       }
 
       function toggleStreetView() {
         const toggle = panorama.getVisible();
-
+        
         if (toggle == false) {
           panorama.setVisible(true);
           showMarkers();
@@ -229,8 +235,6 @@
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-
-
 </script>
 
 <script>
