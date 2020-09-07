@@ -8,7 +8,7 @@ Vue.config.productionTip = false
 // 2020/09/04 Ryo Omae
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'APIKEY',
+    key: 'API_KEY',
     libraries: 'places',
     region: 'JP',
     language: 'ja'
