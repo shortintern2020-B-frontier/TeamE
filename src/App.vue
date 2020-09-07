@@ -1,11 +1,10 @@
 <template>
-
-  <v-app>
-    <div id="app">
-      <router-view />
-    </div>
-  </v-app>
-
+<v-app>
+  <div id="app">
+    <!-- <div id="nav"></div> -->
+    <router-view />
+  </div>
+</v-app>
 </template>
 
 <style>
@@ -17,14 +16,15 @@
   color: #2c3e50;
 }
 
-/* #nav {
+#nav {
   padding: 30px;
-} */
+}
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
 }
+
 #nav a.router-link-exact-active {
   color: #42b983;
 }
