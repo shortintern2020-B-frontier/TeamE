@@ -35,4 +35,5 @@
     }
     export makeRoom;
     export addUserToRoom;
+    export removeUserFromRoom;
 </script>
