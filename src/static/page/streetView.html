@@ -9,7 +9,7 @@
       defer
     ></script>
     <script src="./static/js/map_setting.js"</script></script>
-    
+
 
     <style type="text/css">
       /* Always set the map height explicitly to define the size of the div
@@ -58,12 +58,15 @@
       var params = (new URL(document.location)).searchParams;
       var userid = params.get('userid');
       var roomid = params.get('roomid');
+      var username = params.get('username');
+      var start_lat = params.get('start_lat');
+      var start_lng = params.get('start_lng');
       // ここまで
 
       function initMap() {
         const astorPlace = {
-            lat: 42.345573,
-            lng: -71.098326
+            lat: start_lat,
+            lng: start_lng
         }; // Set up the map
 
         map = new google.maps.Map(document.getElementById('map'), {
