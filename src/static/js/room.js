@@ -1,8 +1,6 @@
 // Funcitons to control database
 // Ryo Omae
-function makeContent(database, contentData) {
-    var newContentRef = database.ref('')
-}
+
 
 {/* input: ref to database
 output: roomid */}
