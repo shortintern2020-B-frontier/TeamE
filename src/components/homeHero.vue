@@ -1,5 +1,4 @@
 <template>
-<v-app>
   <v-parallax dark v-bind:src="assetsImage">
     <v-container fluid>
       <v-row align="center" justify="center">
@@ -19,7 +18,6 @@
           </v-row>
     </v-container>
   </v-parallax>
-</v-app>
 </template>
 
 <script>
