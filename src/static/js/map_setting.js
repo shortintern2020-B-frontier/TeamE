@@ -5,10 +5,10 @@ function toggleStreetView() {
     
     if (toggle == false) {
     panorama.setVisible(true);
-    showMarkers();
+    showMarkers(markers);
     } else {
     panorama.setVisible(false);
-    hideMarkers();
+    hideMarkers(markers);
     }
 }
 function togglePins() {
@@ -20,10 +20,10 @@ function togglePins() {
     }
 
     if (PinIsVisible == false) {
-      showMarkers();
+      showMarkers(markers);
       PinIsVisible = true;
     } else {
-      hideMarkers();
+      hideMarkers(markers);
       PinIsVisible = false;
     }
   }
@@ -45,6 +45,6 @@ function showMarkers(markers){
 
 //markerを消去する
 function deleteMarkers(markers){ 
-    hideMarkers();
+    hideMarkers(markers);
     markers=[];
 }
