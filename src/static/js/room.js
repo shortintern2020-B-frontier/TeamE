@@ -9,7 +9,7 @@
         var newRoomRef = roomRef.push();
         var newRoomId = newRoomRef.key;
         newRoomRef.set({
-            roomid: newRoomId 
+            
         });
         return newRoomId;
     }
@@ -22,7 +22,9 @@
         var newUserId = newUserRef.key;
         newUserRef.set({
             userid: newUserId,
-            name: name
+            name: name,
+            lat: 45.0 ,
+            lng: 45.0 ,
         });
         return newUserId;
 
@@ -32,6 +34,16 @@
         var roomRef = database.ref('room/'+roomId+'/'+userId);
         roomRef.remove();
 
+    }
+
+    function getUserFromRoom(database, roomId){
+        var roomRef = database.ref('room/'+roomId);
+        let userList
+        roomRef.once('value').then(function(snapshot){
+            userList = snapshot.val();
+
+        })
+        return userList;
     }
     export makeRoom;
     export addUserToRoom;
