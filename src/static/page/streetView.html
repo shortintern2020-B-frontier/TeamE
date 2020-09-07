@@ -51,6 +51,13 @@
       var PinIsVisible=true;
       var response;
 
+      // userid, roomidをGETパラメータで送ってもらう
+      // Ryo Omae
+      var params = (new URL(document.location)).searchParams;
+      var userid = params.get('userid');
+      var roomid = params.get('roomid');
+      // ここまで
+
       function initMap() {
         const astorPlace = {
             lat: 42.345573,
