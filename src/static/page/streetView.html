@@ -5,9 +5,10 @@
     <title>Overlays Within Street View</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"
       defer
     ></script>
+
 
     <style type="text/css">
       /* Always set the map height explicitly to define the size of the div
@@ -46,7 +47,8 @@
       "use strict";
 
       let panorama;
-      let markers=[];
+      let user_markers=[];
+      let content_markers = [];
       let map;
       var PinIsVisible=true;
       var response;
@@ -87,6 +89,7 @@
         // Note that we don't yet set it visible.
         markers.push(busMarker);
 
+<<<<<<< HEAD
 
         //Meisho Kanaomi　2020/09/04
         for(let i=0; i<markers.length; i++){
@@ -95,6 +98,8 @@
         return window.open(markers[i].url);}))}
 
 
+=======
+>>>>>>> e6131e9afcc0ee50d93a72668679d00e713987bd
         panorama = map.getStreetView();
         panorama.setPosition(astorPlace);
         panorama.setPov(
@@ -177,8 +182,23 @@
       SetContentMarkers(contentData);
   })
 
+<<<<<<< HEAD
 </script>
 <!--処理系は以下に書く-- >
 
+=======
+<!--処理系は以下に書く-->
+<script>
+//userList = getUserFromRoom //ToDo: googlemapsにタグの更新 
+//contentList = getContent
+//Meisho Kanaomi　2020/09/04
+for(let i=0; i<markers.length; i++){
+            console.log(markers[i]);
+            google.maps.event.addListener(markers[i], 'click', (function(url){
+        return window.open(markers[i].url);}))}
+//updatePosition(database, name, roomId, userId)
+
+</script>
+>>>>>>> e6131e9afcc0ee50d93a72668679d00e713987bd
 </body>
 </html>

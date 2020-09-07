@@ -8,7 +8,7 @@ function getContent(database){
     return contentRef;
 }
 
-function makeContent(database, contentData) {
+function addContentToDatabase(database, contentData) {
     var newContentRef = database.ref('')
 }
 
