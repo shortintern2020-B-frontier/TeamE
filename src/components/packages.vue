@@ -16,7 +16,7 @@
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="120px"
                 >
-                <v-card-title v-text="region.region"></v-card-title>
+                <v-card-title class="white--text align-end" v-text="region.region"></v-card-title>
                 </v-img>
                 </v-card>
             </v-col>
@@ -39,7 +39,7 @@
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="500px"
                 >
-                <v-card-title v-text="item.title"></v-card-title>
+                <v-card-title class="white--text align-end" v-text="item.title"></v-card-title>
                 </v-img>
                 <v-divider class="mt-2"></v-divider>
                 </v-card>
