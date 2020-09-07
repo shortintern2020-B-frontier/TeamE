@@ -1,6 +1,7 @@
 <template>
   <div class="detail">
-    <navBar />
+    <navbar />
+    <detailHero/>
     <joinButton />
   </div>
 </template>
@@ -8,14 +9,17 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
+
 import joinButton from "@/components/joinButton.vue";
-import navBar from "@/components/navBar.vue";
+import navbar from "@/components/navbar.vue";
+import detailHero from "@/components/detailHero.vue";
 
 export default {
   name: "detail",
   components: {
     joinButton,
-    navBar
+    navbar,
+    detailHero
   }
 };
 </script>
