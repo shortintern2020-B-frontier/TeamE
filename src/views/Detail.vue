@@ -3,7 +3,8 @@
     <navbar />
     <detailHero/>
     <joinButton />
-  </div>
+    <purchasedList/>
+</div>
 </template>
 
 <script>
@@ -13,13 +14,16 @@
 import joinButton from "@/components/joinButton.vue";
 import navbar from "@/components/navbar.vue";
 import detailHero from "@/components/detailHero.vue";
+import purchasedList from '@/components/purchasedList.vue';
 
 export default {
-  name: "detail",
+  name: 'detail',
   components: {
-    joinButton,
     navbar,
+    joinButton,
+    purchasedList,
     detailHero
   }
-};
+}
 </script>
+
