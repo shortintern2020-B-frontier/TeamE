@@ -3,7 +3,7 @@
     <v-container fluid>
       <v-row align="center" justify="center" align-content="center">
         <v-col class="text-center">
-          <h4 class="title white--text">京都の名所巡りの旅</h4>
+          <h4 class="display-1 white--text">京都の名所巡りの旅</h4>
         </v-col>
       </v-row>
     </v-container>
@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      assetsImage: require('@/assets/Kyoto.jpg')
+      assetsImage: require('@/assets/Kinkakuji.jpg')
     };
   }
 };
@@ -23,6 +23,5 @@ export default {
 <style>
 .v-parallax__image {
   width: 100vw;
-  height: 100%;
 }
 </style>
