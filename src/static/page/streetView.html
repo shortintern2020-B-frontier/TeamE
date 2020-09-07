@@ -5,11 +5,9 @@
     <title>Overlays Within Street View</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqchniiuahLqMZP9-WOdvo_w5pMQ6uGhQ&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
-    <script src="./static/js/map_setting.js"</script></script>
-
 
     <style type="text/css">
       /* Always set the map height explicitly to define the size of the div
@@ -65,8 +63,8 @@
 
       function initMap() {
         const astorPlace = {
-            lat: start_lat,
-            lng: start_lng
+            lat: 42.345,//start_lat,
+            lng: -71.098//start_lng
         }; // Set up the map
 
         map = new google.maps.Map(document.getElementById('map'), {
@@ -82,7 +80,7 @@
           },
           map,
           icon:
-            "../../img/tokyo_2021.png",
+            "../img/tokyo_2021.png",
           title: "Bus Stop",
           url:'https://www.rakuten.co.jp/'
         }); // We get the map's default panorama and set up some defaults.
@@ -92,7 +90,7 @@
 
         //Meisho Kanaomi　2020/09/04
         for(let i=0; i<markers.length; i++){
-            console.log(markers[i]);
+            //console.log(markers[i]);
             google.maps.event.addListener(markers[i], 'click', (function(url){
         return window.open(markers[i].url);}))}
 
@@ -160,8 +158,27 @@
 <script src = "../js/map_setting.js"></script>
 <script src = "../js/room.js"></script>
 <script src = "../js/user.js"></script>
+<script src = "../js/content.js"></script>
 
+<!-- 2020/09/07 Ryota Watanabe-->
+<script>
+  var database = firebase.database();
+  var contentRef=getContent(database);
+  var contentData;
+  var contentTempData;
+  //DBが更新されたときに呼び出される(更新処理に使う)
+  contentRef.once('value',function(snapshot){
+      contentTempData = snapshot.val();
+      SetContentMarkers(contentTempData);
+  })
+  contentRef.on('value', function(snapshot) {
+      deleteMarkers();
+      contentData = snapshot.val()
+      SetContentMarkers(contentData);
+  })
 
+</script>
 <!--処理系は以下に書く-- >
+
 </body>
 </html>
