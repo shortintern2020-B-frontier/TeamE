@@ -106,17 +106,12 @@
         markers.push(busMarker);
 
 
-        //Meisho Kanaomi
+        //Meisho Kanaomi　2020/09/04
         for(let i=0; i<markers.length; i++){
             console.log(markers[i]);
             google.maps.event.addListener(markers[i], 'click', (function(url){
         return window.open(markers[i].url);}))}
-        
-        
-        
-        //function(){ location.href = url; };
-        //})(markers[i].url));
-        //}
+
 
         panorama = map.getStreetView();
         panorama.setPosition(astorPlace);
@@ -129,7 +124,7 @@
         );
         panorama.setVisible(true);
 
-        //Meisho Kanaomi
+        //Meisho Kanaomi 2020/09/07
         panorama.addListener("position_changed", () => {
         const positionCell = document.getElementById("position-cell");
         const tmp_position = panorama.getPosition();
