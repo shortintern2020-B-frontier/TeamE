@@ -15,11 +15,6 @@
 </template>
 
 <style lang="css">
-.container {
-  padding-top: 24px;
-  width: 90%;
-}
-
 .container p {
   font-size: 16px;
   font-weight: bold;
@@ -32,6 +27,10 @@
   border-radius: 10px;
   font-size: 12px;
   padding-left: 12px;
+}
+
+.new-tour p {
+  padding-top: 24px;
 }
 
 .container button {
@@ -51,5 +50,6 @@
 
 .exist-tour button {
   background-color: rgba(255, 56, 92, 1);
+  margin-bottom: 32px;
 }
 </style>
