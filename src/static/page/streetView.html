@@ -5,7 +5,7 @@
     <title>Overlays Within Street View</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcUv44NbZm-6GfoysiQ9fx2F_R7Z4Q6zI&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqchniiuahLqMZP9-WOdvo_w5pMQ6uGhQ"
       defer
     ></script>
      <!-- 2020/09/04 Ryo Omae -->
@@ -92,12 +92,18 @@
       var username = params.get('username');
       var start_lat = params.get('start_lat');
       var start_lng = params.get('start_lng');
+      
+      // テスト用
+      roomid = '-MGa9n3IJ3iSSfMQ0vIl';
+      start_lat = 135;
+      start_lng = 35;
       // ここまで
 
+      
       function initMap() {
         const astorPlace = {
-            lat: 35.612250,
-            lng: 139.628361
+            lat: 135,
+            lng: 35
         }; // Set up the map
 
         map = new google.maps.Map(document.getElementById('map'), {
@@ -113,13 +119,24 @@
           },
           map,
           icon:
-            "../../img/tokyo_2021.png",
+            "../img/tokyo_2021.png",
           title: "Bus Stop",
           url:'https://www.rakuten.co.jp/'
         }); // We get the map's default panorama and set up some defaults.
         // Note that we don't yet set it visible.
         content_markers.push(busMarker);
 
+<<<<<<< HEAD
+
+        //Meisho Kanaomi　2020/09/04
+        for(let i=0; i<markers.length; i++){
+            //console.log(markers[i]);
+            google.maps.event.addListener(markers[i], 'click', (function(url){
+        return window.open(markers[i].url);}))}
+
+
+=======
+>>>>>>> e6131e9afcc0ee50d93a72668679d00e713987bd
         panorama = map.getStreetView();
         panorama.setPosition(astorPlace);
         panorama.setPov(
@@ -146,7 +163,9 @@
         })
     });
       }
+      initMap();
       
+
     </script>
   </head>
   <body>
@@ -169,20 +188,64 @@
 <script src = "../js/map_setting.js"></script>
 <script src = "../js/room.js"></script>
 <script src = "../js/user.js"></script>
-<scritp src = "../js/content.js"></scritp>
+<script src = "../js/content.js"></script>
 
-
+<!-- 2020/09/07 Ryota Watanabe-->
+<script>
+  var database = firebase.database();
+  var contentRef=getContent(database);
+  var contentData;
+  var contentTempData;
+  //DBが更新されたときに呼び出される(更新処理に使う)
+  contentRef.once('value',function(snapshot){
+      contentTempData = snapshot.val();
+      SetContentMarkers(contentTempData);
+  })
+  contentRef.on('value', function(snapshot) {
+      deleteMarkers();
+      contentData = snapshot.val()
+      SetContentMarkers(contentData);
+  })
+</script>
 <!--処理系は以下に書く-->
 <script>
-//userList = getUserFromRoom //ToDo: googlemapsにタグの更新 
-//contentList = getContent
-//Meisho Kanaomi　2020/09/04
-function embbed_url(markers){
-  for(let i=0; i<markers.length; i++){
-              console.log(markers[i]);
-              google.maps.event.addListener(markers[i], 'click', (function(url){
-          return window.open(markers[i].url);}))}}
-//updatePosition(database, name, roomId, userId)
+  // Ryo Omae
+  var database = firebase.database();
+  var roomRef = database.ref('room/'+roomid);
+  roomRef.on('value').then(function(snapshot){
+    userData = snapshot.val();
+    console.log('userdata', userData);
+  var userData
+    var userKeyList = Object.keys(userData);
+    userKeyList = userKeyList.filter(n => n != "roomid");
+    // console.log(userKeyList);
+    var userList=[];
+
+    deleteMarkers(user_markers);
+
+    userKeyList.forEach(element => {
+      marker = new google.maps.Marker({
+          position: {
+            lat: userList[element]['lat'],
+            lng: userList[element]['lng']
+          },
+          map,
+          icon:
+            "../../img/tokyo_2021.png",
+        });
+      user_markers.push(marker);
+    });
+    setMapOnAll(map, user_markers);
+    })
+    
+    //ToDo: googlemapsにタグの更新 
+    //contentList = getContent
+    //Meisho Kanaomi　2020/09/04
+    for(let i=0; i<markers.length; i++){
+                console.log(markers[i]);
+                google.maps.event.addListener(markers[i], 'click', (function(url){
+            return window.open(markers[i].url);}))}
+    //updatePosition(database, name, roomId, userId)
 
 </script>
 </body>
