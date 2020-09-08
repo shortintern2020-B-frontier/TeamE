@@ -1,3 +1,6 @@
+/**
+ * @author Tomoharu Yanase
+ */
 <template>
   <div class="purchase-container">
     <div class="title-container">
