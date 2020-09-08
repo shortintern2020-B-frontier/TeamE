@@ -9,7 +9,7 @@
       <p>友達が開始した旅行に参加する</p>
       <input type="text" placeholder="ニックネーム" />
       <input type="text" placeholder="ルームID" />
-      <button>参加する</button>
+      <button onclick="location.href='./static/page/streetView.html'">参加する</button>
     </div>
   </v-card>
 </template>
