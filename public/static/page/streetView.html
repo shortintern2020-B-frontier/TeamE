@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <!-- Watanabe -->
+    <div class="drawer">
+      <input type="checkbox" id="drawer-check" class="drawer-hidden" />
+      <label for="drawer-check" class="drawer-open">
+        <span></span>
+      </label>
+
+      <div class="drawer-content">
+        <div class="content-container">
+          <div class="participant-container">
+            <p class="participant-title">参加者一覧</p>
+
+            <div class="members">
+              <div class="member-container">
+                <img src="../../../src/assets/Okinawa.jpg" />
+                <p>Tomoharu Yanase</p>
+              </div>
+              <div class="member-container">
+                <img src="../../../src/assets/Okinawa.jpg" />
+                <p>Kota Yukawa</p>
+              </div>
+              <div class="member-container">
+                <img src="../../../src/assets/Okinawa.jpg" />
+                <p>ISSEY MIYAMOTO</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chara-container">
+            <p>文字サイズ</p>
+
+            <div class="font-container">
+              <button type="button" class="bigger btn">大</button>
+              <button type="button" class="smaller btn">小</button>
+            </div>
+          </div>
+
+          <div class="tourID-container">
+            <p class="id-title">ツアーID</p>
+
+            <div class="id-wrapper">
+              <p>xxxxxxxxxxx</p>
+            </div>
+            <button class="remove-btn">退出する</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Watanabe -->
     <title>Overlays Within Street View</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcUv44NbZm-6GfoysiQ9fx2F_R7Z4Q6zI&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
-     <!-- 2020/09/04 Ryo Omae -->
+    <!-- 2020/09/04 Ryo Omae -->
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -16,30 +63,30 @@
 
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
-  
-    // TODO: Replace the following with your app's Firebase project configuration
+
+    // TODO: Replace the following with your app's Firebase project
+    configuration
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyD6VaOrWy9iANa9hJymbptL7YDC7PKZ6hM",
-    authDomain: "rakuten-intern2020-b5.firebaseapp.com",
-    databaseURL: "https://rakuten-intern2020-b5.firebaseio.com",
-    projectId: "rakuten-intern2020-b5",
-    storageBucket: "rakuten-intern2020-b5.appspot.com",
-    messagingSenderId: "677223095236",
-    appId: "1:677223095236:web:683056011b10dc74c5e291"
-  };
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyD6VaOrWy9iANa9hJymbptL7YDC7PKZ6hM",
+        authDomain: "rakuten-intern2020-b5.firebaseapp.com",
+        databaseURL: "https://rakuten-intern2020-b5.firebaseio.com",
+        projectId: "rakuten-intern2020-b5",
+        storageBucket: "rakuten-intern2020-b5.appspot.com",
+        messagingSenderId: "677223095236",
+        appId: "1:677223095236:web:683056011b10dc74c5e291"
+      };
 
-  // Initialize Firebase
-  //Meisho.K 2020/9/07
-  firebase.initializeApp(firebaseConfig);
-  var DataBase = firebase.database();
-</script>
-
+      // Initialize Firebase
+      //Meisho.K 2020/9/07
+      firebase.initializeApp(firebaseConfig);
+      var DataBase = firebase.database();
+    </script>
 
     <style type="text/css">
       /* Always set the map height explicitly to define the size of the div
@@ -74,59 +121,259 @@
         margin-left: -100px;
       }
     </style>
+    <style lang="css">
+      .drawer-hidden {
+        display: none;
+      }
+
+      .drawer-open {
+        display: flex;
+        height: 60px;
+        width: 60px;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 100;
+        cursor: pointer;
+      }
+
+      .drawer-open span,
+      .drawer-open span:before,
+      .drawer-open span:after {
+        content: "";
+        display: block;
+        height: 3px;
+        width: 25px;
+        border-radius: 3px;
+        background: #333;
+        transition: 0.5s;
+        position: absolute;
+      }
+
+      .drawer-open span:before {
+        bottom: 8px;
+      }
+
+      .drawer-open span:after {
+        top: 8px;
+      }
+
+      #drawer-check:checked ~ .drawer-open span {
+        background: rgba(255, 255, 255, 0);
+      }
+
+      #drawer-check:checked ~ .drawer-open span::before {
+        bottom: 0;
+        transform: rotate(45deg);
+      }
+
+      #drawer-check:checked ~ .drawer-open span::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+
+      .drawer-content {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 80px;
+        left: 100%;
+        z-index: 99;
+        background: #fff;
+        transition: 0.5s;
+      }
+
+      #drawer-check:checked ~ .drawer-content {
+        left: 80%;
+      }
+
+      .drawer-content {
+        padding: 0;
+        width: 240px;
+        height: 480px;
+        border: solid 1px gray;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .content-container {
+        padding: 0;
+        width: 90%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .participant-container {
+        margin-top: 24px;
+      }
+
+      .participant-title {
+        margin-top: 0;
+        padding-bottom: 8px;
+        font-size: 12px;
+        text-align: center;
+        border-bottom: solid 2px black;
+        font-weight: bold;
+      }
+
+      .member-container {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        padding-left: 12px;
+        margin-bottom: 16px;
+      }
+
+      .member-container img {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        margin-right: 16px;
+      }
+
+      .members {
+        padding: 0;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+
+      .member-container p {
+        margin: 0;
+        font-size: 12px;
+      }
+
+      .chara-container {
+        height: 80px;
+        margin-bottom: 12px;
+      }
+
+      .chara-container button {
+        font-size: 16px;
+      }
+
+      .chara-container p {
+        padding-bottom: 8px;
+        font-size: 12px;
+        text-align: center;
+        border-bottom: solid 2px black;
+        font-weight: bold;
+      }
+
+      .font-container {
+        padding: 0;
+        display: flex;
+        text-align: center;
+        align-content: center;
+      }
+
+      .btn {
+        width: 45%;
+        height: 24px;
+        border-radius: 2px;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        font-size: 12px;
+        border: 1px solid gray;
+      }
+
+      .bigger {
+        font-weight: bold;
+      }
+
+      /* .smaller {
+        background-color: rebeccapurple;
+      } */
+
+      .id-title {
+        font-weight: bold;
+        padding-bottom: 8px;
+        margin-bottom: 24px;
+        font-size: 12px;
+        text-align: center;
+        border-bottom: solid 2px black;
+      }
+
+      .id-wrapper {
+        width: 100%;
+        padding: 0;
+        border: 1px solid gray;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .id-wrapper p {
+        font-size: 12px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .remove-btn {
+        width: 100%;
+        padding: 0;
+        text-align: center;
+        height: 32px;
+        border-radius: 4px;
+        background-color: rgba(255, 56, 92, 1);
+        font-size: 14px;
+        color: white;
+        font-weight: bold;
+        margin-top: 24px;
+      }
+    </style>
     <script>
       "use strict";
 
       var panorama;
-      let user_markers=[];
+      let user_markers = [];
       let content_markers = [];
       var map;
-      var PinIsVisible=true;
+      var PinIsVisible = true;
       var response;
 
       // userid, roomidをGETパラメータで送ってもらう
       // Ryo Omae
-      var params = (new URL(document.location)).searchParams;
-      var userId = params.get('userid');
-      var roomId = params.get('roomid');
-      var userName = params.get('username');
-      var start_lat = params.get('start_lat');
-      var start_lng = params.get('start_lng');
-      
+      var params = new URL(document.location).searchParams;
+      var userId = params.get("userid");
+      var roomId = params.get("roomid");
+      var userName = params.get("username");
+      var start_lat = params.get("start_lat");
+      var start_lng = params.get("start_lng");
+
       // テスト用
       //Meisho.K 2020/9/7
       //Meisho.K 2020.9.8
-      if (roomId === null){
-        roomId = '-MGa9n3IJ3iSSfMQ0vIl'
+      if (roomId === null) {
+        roomId = "-MGa9n3IJ3iSSfMQ0vIl";
       }
-      if (userId === null){
-        userId = "888888888"
+      if (userId === null) {
+        userId = "888888888";
       }
-      if (userName === null){
-        userName = "RakutenTarou"
+      if (userName === null) {
+        userName = "RakutenTarou";
       }
 
-      if (start_lat=== null | start_lng===null){
-        start_lat = 35.03967366595888//緯度 90以上指定すると壊れる
-        start_lng= 135.7284317640296//経度
+      if ((start_lat === null) | (start_lng === null)) {
+        start_lat = 35.03967366595888; //緯度 90以上指定すると壊れる
+        start_lng = 135.7284317640296; //経度
       }
-      ;
-   
-      
       // ここまで
 
-      
-      console.log('aaa');
+      console.log("aaa");
       function initMap() {
         const astorPlace = {
-            lat: start_lat,
-            lng: start_lng
+          lat: start_lat,
+          lng: start_lng
         }; // Set up the map
-        console.log(astorPlace)
-        map = new google.maps.Map(document.getElementById('map'), {
-        center: astorPlace,
-        zoom: 18,
-        streetViewControl: true,
+        console.log(astorPlace);
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: astorPlace,
+          zoom: 18,
+          streetViewControl: true
         });
 
         const busMarker = new google.maps.Marker({
@@ -135,14 +382,12 @@
             lng: -71.098
           },
           map,
-          icon:
-            "../img/tokyo_2021.png",
+          icon: "../img/tokyo_2021.png",
           title: "Bus Stop",
-          url:'https://www.rakuten.co.jp/'
+          url: "https://www.rakuten.co.jp/"
         }); // We get the map's default panorama and set up some defaults.
         // Note that we don't yet set it visible.
         content_markers.push(busMarker);
-
 
         panorama = map.getStreetView();
         panorama.setPosition(astorPlace);
@@ -158,21 +403,19 @@
         //Meisho.K 2020/09/07
         //座標の移動に応じてdbに座標を更新する処理
         panorama.addListener("position_changed", () => {
-        const tmp_position = panorama.getPosition();
-        const tmp_lat = tmp_position.lat()
-        const tmp_lng = tmp_position.lng()
-        console.log(tmp_lat)
-        var roomRef = DataBase.ref("room/"+roomId+"/"+userId)
-        roomRef.update({
-        userid: userId,
-        name: userName,
-        lat: tmp_lat,
-        lng: tmp_lng
-        })
-    });
+          const tmp_position = panorama.getPosition();
+          const tmp_lat = tmp_position.lat();
+          const tmp_lng = tmp_position.lng();
+          console.log(tmp_lat);
+          var roomRef = DataBase.ref("room/" + roomId + "/" + userId);
+          roomRef.update({
+            userid: userId,
+            name: userName,
+            lat: tmp_lat,
+            lng: tmp_lng
+          });
+        });
       }
-      
-
     </script>
   </head>
   <body>
@@ -182,22 +425,17 @@
         value="Toggle Street View"
         onclick="toggleStreetView();"
       />
-      <input
-        type="button"
-        value="Toggle Pins"
-        onclick="togglePins();"
-      />
+      <input type="button" value="Toggle Pins" onclick="togglePins();" />
     </div>
     <div id="map"></div>
 
-   
-<!-- 2020/09/07 Meisho.K -->
-<script src = "../js/map_setting.js"></script>
-<!-- 2020/09/08 Ryo Omae -->
-<script src = "../js/room.js"></script>
-<!-- 2020/09/07 Ryota Watanabe-->
-<script src = "../js/content.js"></script>
-<!-- 2020/09/08 Meisho.K-->
-<script src = "../js/user.js"></script>
-</body>
+    <!-- 2020/09/07 Meisho.K -->
+    <script src="../js/map_setting.js"></script>
+    <!-- 2020/09/08 Ryo Omae -->
+    <script src="../js/room.js"></script>
+    <!-- 2020/09/07 Ryota Watanabe-->
+    <script src="../js/content.js"></script>
+    <!-- 2020/09/08 Meisho.K-->
+    <script src="../js/user.js"></script>
+  </body>
 </html>

@@ -2,7 +2,11 @@
   <div class="home">
     <navbar />
     <homeHero />
-    <packages v-bind:val='alldata' v-bind:filter='filtered' @send="parentMethod" />
+    <packages
+      v-bind:val="alldata"
+      v-bind:filter="filtered"
+      @send="parentMethod"
+    />
     {{ regioninfo }}
   </div>
 </template>
@@ -14,7 +18,7 @@
 import navbar from "@/components/navbar.vue";
 import homeHero from "@/components/homeHero.vue";
 import packages from "@/components/packages.vue";
-import firebase from 'firebase'
+import firebase from "firebase";
 
 export default {
   name: "Home",
@@ -23,20 +27,22 @@ export default {
     homeHero,
     packages
   },
-  data:()=>({
+  data: () => ({
     alldata: [],
     filtered: [],
     search: [],
-    regioninfo:'',
+    regioninfo: ""
   }),
   mounted() {
-    firebase.database().ref("package")
-      .on("value", snapshot => (this.alldata=snapshot.val()));
+    firebase
+      .database()
+      .ref("package")
+      .on("value", snapshot => (this.alldata = snapshot.val()));
   },
   methods: {
-   parentMethod(region_choice) {
-    this.regioninfo = region_choice;
-   }
+    parentMethod(region_choice) {
+      this.regioninfo = region_choice;
+    }
   }
 };
 </script>
