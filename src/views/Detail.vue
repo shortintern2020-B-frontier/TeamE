@@ -2,10 +2,12 @@
   <div class="detail">
     <navbar />
     <detailHero />
+    
     <div class="package-container">
       <div class="contents-detail">
         <packageDetail />
         <purchasedList />
+        <routeMap />
       </div>
       <div class="button-container">
         <joinButton />
@@ -23,6 +25,7 @@ import navbar from "@/components/navbar.vue";
 import packageDetail from "@/components/packageDetail.vue";
 import detailHero from "@/components/detailHero.vue";
 import purchasedList from "@/components/purchasedList.vue";
+import routeMap from "@/components/routeMap.vue";
 
 export default {
   name: "detail",
@@ -31,7 +34,8 @@ export default {
     joinButton,
     packageDetail,
     purchasedList,
-    detailHero
+    detailHero,
+    routeMap
   }
 };
 </script>
