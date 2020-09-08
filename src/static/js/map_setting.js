@@ -5,10 +5,10 @@ function toggleStreetView() {
     
     if (toggle == false) {
     panorama.setVisible(true);
-    showMarkers(markers);
+    showMarkers(content_markers);
     } else {
     panorama.setVisible(false);
-    hideMarkers(markers);
+    hideMarkers(content_markers);
     }
 }
 function togglePins() {
@@ -20,10 +20,10 @@ function togglePins() {
     }
 
     if (PinIsVisible == false) {
-      showMarkers(markers);
+      showMarkers(content_markers);
       PinIsVisible = true;
     } else {
-      hideMarkers(markers);
+      hideMarkers(content_markers);
       PinIsVisible = false;
     }
   }
