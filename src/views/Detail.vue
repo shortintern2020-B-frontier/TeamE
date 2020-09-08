@@ -1,7 +1,7 @@
 <template>
   <div class="detail">
     <navbar />
-    <detailHero />
+    <detailHero :packagedata="packagedata" />
     <div class="package-container">
       <div class="contents-detail">
         <packageDetail :packagedata="packagedata" />

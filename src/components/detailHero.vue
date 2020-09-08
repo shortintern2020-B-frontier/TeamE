@@ -3,11 +3,11 @@
  */
 
 <template>
-  <v-parallax dark v-bind:src="assetsImage">
+  <v-parallax dark v-bind:src="packagedata.package_image">
     <v-container fluid>
       <v-row align="center" justify="center" align-content="center">
         <v-col class="text-center">
-          <h4 class="display-1 white--text">京都の名所巡りの旅</h4>
+          <h4 class="display-1 white--text">{{ packagedata.package_name }}</h4>
         </v-col>
       </v-row>
     </v-container>
@@ -16,11 +16,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      assetsImage: require('@/assets/Kinkakuji.jpg')
-    };
-  }
+  props: ['packagedata']
 };
 </script>
 
