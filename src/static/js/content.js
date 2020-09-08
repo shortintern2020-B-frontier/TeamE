@@ -31,7 +31,7 @@ function SetContentMarkers(contentData, markers){
       content_markers.push(newMarker);
     });
     //urlを埋め込む
-    //Meisho Kanaomi 2020/9/4
+    //Meisho Kanaomi 2020/9/4 
     for(let i=0; i<content_markers.length; i++){
         //console.log(markers[i]);
         google.maps.event.addListener(content_markers[i], 'click', (function(url){
