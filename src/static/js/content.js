@@ -38,3 +38,21 @@ function SetContentMarkers(contentData, markers){
         return window.open(content_markers[i].url);}))
     }
 }
+
+//Markerの初期配置・情報更新を行う
+var contentRef=getContent(DataBase);
+var contentData;
+var contentTempData;
+//Markerの初期配置
+contentRef.once('value',function(snapshot){
+  console.log('contentref once')
+  contentTempData = snapshot.val();
+  SetContentMarkers(contentTempData, content_markers);
+})
+//DBが更新されたときに呼び出される(更新処理に使う)
+contentRef.on('value', function(snapshot) {
+  console.log('contentref on');
+  deleteMarkers(content_markers);
+  contentData = snapshot.val()
+  SetContentMarkers(contentData, content_markers);
+})

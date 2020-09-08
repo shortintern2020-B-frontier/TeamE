@@ -182,26 +182,9 @@
 <script src = "../js/map_setting.js"></script>
 <script src = "../js/room.js"></script>
 <script src = "../js/user.js"></script>
+<!-- 2020/09/07 Ryota Watanabe-->
 <script src = "../js/content.js"></script>
 
-<!-- 2020/09/07 Ryota Watanabe-->
-<script>
-  var contentRef=getContent(DataBase);
-  var contentData;
-  var contentTempData;
-  //DBが更新されたときに呼び出される(更新処理に使う)
-  contentRef.once('value',function(snapshot){
-    console.log('contentref once')
-    contentTempData = snapshot.val();
-    SetContentMarkers(contentTempData, content_markers);
-  })
-  contentRef.on('value', function(snapshot) {
-    console.log('contentref on');
-    deleteMarkers(content_markers);
-    contentData = snapshot.val()
-    SetContentMarkers(contentData, content_markers);
-  })
-</script>
 <!--処理系は以下に書く-->
 <script>
   // Ryo Omae
