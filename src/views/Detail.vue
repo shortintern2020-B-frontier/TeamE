@@ -5,7 +5,7 @@
     <div class="package-container">
       <div class="contents-detail">
         <packageDetail :packagedata="packagedata" />
-        <purchasedList />
+        <purchasedList :packagedata="packagedata" />
       </div>
       <div class="button-container">
         <joinButton />
