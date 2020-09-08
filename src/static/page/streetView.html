@@ -180,6 +180,7 @@
    
 <!-- 2020/09/07 Meisho.K -->
 <script src = "../js/map_setting.js"></script>
+<!-- 2020/09/08 Ryo Omae -->
 <script src = "../js/room.js"></script>
 <script src = "../js/user.js"></script>
 <!-- 2020/09/07 Ryota Watanabe-->
@@ -187,7 +188,7 @@
 
 <!--処理系は以下に書く-->
 <script>
-  // Ryo Omae
+  // 2020/09/08 Ryo Omae
   // アバター位置情報更新処理
   var roomRef = DataBase.ref('room/'+roomId);
   var userData
@@ -197,7 +198,7 @@
     userData = snapshot.val();
     console.log('userdata', userData);
     userKeyList = Object.keys(userData);
-    userKeyList = userKeyList.filter(n => n != "roomid");
+    userKeyList = userKeyList.filter(n => n != "roomid" && n != userId);
     var userList=[];
 
     deleteMarkers(user_markers);
