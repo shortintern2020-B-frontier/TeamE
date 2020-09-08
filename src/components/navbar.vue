@@ -1,6 +1,10 @@
+<!-- @author ISSEI MIYAMOTO -->
+
 <template>
   <header>
-    <div>VTour</div>
+    <router-link to="/">
+      <div>VTour</div>
+    </router-link>
   </header>
 </template>
 

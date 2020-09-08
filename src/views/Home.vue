@@ -1,21 +1,32 @@
 <template>
-<div class="home">
-
-  <packages/>
-</div>
+  <div class="home">
+    <navbar />
+    <homeHero />
+    <packages />
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 
+import navbar from "@/components/navbar.vue";
+import homeHero from "@/components/homeHero.vue";
 import packages from "@/components/packages.vue";
 
 export default {
   name: "Home",
   components: {
-
-    packages,
+    navbar,
+    homeHero,
+    packages
   }
 };
 </script>
+
+<style lang="css">
+.home {
+  padding: 0;
+  margin: 0;
+}
+</style>
