@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <!-- Watanabe -->
+    <title>Overlays Within Street View</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcUv44NbZm-6GfoysiQ9fx2F_R7Z4Q6zI&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+     <!-- 2020/09/04 Ryo Omae -->
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
+  
+    // TODO: Replace the following with your app's Firebase project configuration
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD6VaOrWy9iANa9hJymbptL7YDC7PKZ6hM",
+    authDomain: "rakuten-intern2020-b5.firebaseapp.com",
+    databaseURL: "https://rakuten-intern2020-b5.firebaseio.com",
+    projectId: "rakuten-intern2020-b5",
+    storageBucket: "rakuten-intern2020-b5.appspot.com",
+    messagingSenderId: "677223095236",
+    appId: "1:677223095236:web:683056011b10dc74c5e291"
+  };
+
+  // Initialize Firebase
+  //Meisho.K 2020/9/07
+  firebase.initializeApp(firebaseConfig);
+  var DataBase = firebase.database();
+</script>
+
+
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: "Roboto", "sans-serif";
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #floating-panel {
+        margin-left: -100px;
+      }
+    </style>
+    <script>
+      "use strict";
+
+      var panorama;
+      let user_markers=[];
+      let content_markers = [];
+      var map;
+      var PinIsVisible=true;
+      var response;
+
+      // userid, roomidをGETパラメータで送ってもらう
+      // Ryo Omae
+      var params = (new URL(document.location)).searchParams;
+      var userId = params.get('userid');
+      var roomId = params.get('roomid');
+      var userName = params.get('username');
+      var start_lat = params.get('start_lat');
+      var start_lng = params.get('start_lng');
+      
+      // テスト用
+      roomId = '-MGa9n3IJ3iSSfMQ0vIl';
+      //Meisho.K 2020/9/7
+      userId = "888888888"
+      userName = "RakutenTarou"
+      start_lat= 35.612250;//緯度 90以上指定すると壊れる
+      start_lng= 139.628361;//経度
+      // ここまで
+
+      
+      console.log('aaa');
+      function initMap() {
+        const astorPlace = {
+            lat: start_lat,
+            lng: start_lng
+        }; // Set up the map
+        console.log(astorPlace)
+        map = new google.maps.Map(document.getElementById('map'), {
+        center: astorPlace,
+        zoom: 18,
+        streetViewControl: true,
+        });
+
+        const busMarker = new google.maps.Marker({
+          position: {
+            lat: 42.345,
+            lng: -71.098
+          },
+          map,
+          icon:
+            "../img/tokyo_2021.png",
+          title: "Bus Stop",
+          url:'https://www.rakuten.co.jp/'
+        }); // We get the map's default panorama and set up some defaults.
+        // Note that we don't yet set it visible.
+        content_markers.push(busMarker);
+
+
+        panorama = map.getStreetView();
+        panorama.setPosition(astorPlace);
+        panorama.setPov(
+          /** @type {google.maps.StreetViewPov} */
+          {
+            heading: 265,
+            pitch: 0
+          }
+        );
+        panorama.setVisible(true);
+
+        //Meisho.K 2020/09/07
+        //座標の移動に応じてdbに座標を更新する処理
+        panorama.addListener("position_changed", () => {
+        const tmp_position = panorama.getPosition();
+        const tmp_lat = tmp_position.lat()
+        const tmp_lng = tmp_position.lng()
+        console.log(tmp_lat)
+        var roomRef = DataBase.ref("room/"+roomId+"/"+userId)
+        roomRef.update({
+        userid: userId,
+        name: userName,
+        lat: tmp_lat,
+        lng: tmp_lng
+        })
+    });
+      }
+      
+
+    </script>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <input
+        type="button"
+        value="Toggle Street View"
+        onclick="toggleStreetView();"
+      />
+      <input
+        type="button"
+        value="Toggle Pins"
+        onclick="togglePins();"
+      />
+    </div>
+    <div id="map"></div>
+
+   
+<!-- 2020/09/07 Meisho.K -->
+<script src = "../js/map_setting.js"></script>
+<!-- 2020/09/08 Ryo Omae -->
+<script src = "../js/room.js"></script>
+<script src = "../js/user.js"></script>
+<!-- 2020/09/07 Ryota Watanabe-->
+<script src = "../js/content.js"></script>
+
+<!--処理系は以下に書く-->
+<script>
+  // 2020/09/08 Ryo Omae
+  // アバター位置情報更新処理
+  var roomRef = DataBase.ref('room/'+roomId);
+  var userData
+  var userKeyList;
+  roomRef.on('value', function(snapshot){
+    console.log('roomref on');
+    userData = snapshot.val();
+    console.log('userdata', userData);
+    userKeyList = Object.keys(userData);
+    userKeyList = userKeyList.filter(n => n != "roomid" && n != userId);
+    var userList=[];
+
+    deleteMarkers(user_markers);
+    user_markers = [];
+
+    userKeyList.forEach(element => {
+      var marker = new google.maps.Marker({
+          position: {
+            lat: userData[element]['lat'],
+            lng: userData[element]['lng']
+          },
+          map,
+          icon:
+            "../img/pistol_pose_man.png",
+          title:userData[element]["name"]//Meihso.K 2020.9.8
+        });
+      user_markers.push(marker);
+    });
+
+    });
+    
+    //ToDo: googlemapsにタグの更新 
+    //contentList = getContent
+    //updatePosition(database, name, roomId, userId)
+
+</script>
+</body>
+</html>
