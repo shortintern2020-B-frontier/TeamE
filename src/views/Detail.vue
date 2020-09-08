@@ -4,7 +4,7 @@
     <detailHero />
     <div class="package-container">
       <div class="contents-detail">
-        <packageDetail />
+        <packageDetail :packagedata="packagedata" />
         <purchasedList />
       </div>
       <div class="button-container">
@@ -23,6 +23,7 @@ import navbar from "@/components/navbar.vue";
 import packageDetail from "@/components/packageDetail.vue";
 import detailHero from "@/components/detailHero.vue";
 import purchasedList from "@/components/purchasedList.vue";
+import firebase from 'firebase'
 
 export default {
   name: "detail",
@@ -32,6 +33,13 @@ export default {
     packageDetail,
     purchasedList,
     detailHero
+  },
+  data:()=>({
+    packagedata: {}
+  }),
+  mounted() {
+    firebase.database().ref("package/" + this.$route.params.id)
+      .on("value", snapshot => (this.packagedata=snapshot.val()));
   }
 };
 </script>
