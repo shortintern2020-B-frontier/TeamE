@@ -9,7 +9,7 @@ function makeRoom(database) {
     var newRoomRef = roomRef.push();
     var newRoomId = newRoomRef.key;
     newRoomRef.set({
-        userid: 'userdata'
+        roomid: newRoomId
     });
     return newRoomId;
 }
@@ -44,9 +44,10 @@ function removeUserFromRoom(database, roomId, userId){
 function logoutFromRoom(database, roomId, userId){
     removeUserFromRoom(database, roomId, userId);
     var userList = getUserFromRoom(database, userId);
-    if (userList.length == 1){
+    if (!userList){
         console.log('remove room'+roomId);
-        removeRoom();
+        removeRoom(database, roomId);
     }
+    window.alert('ログアウトしました');
 }
 
