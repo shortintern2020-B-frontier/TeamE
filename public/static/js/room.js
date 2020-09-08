@@ -9,7 +9,7 @@ function makeRoom(database) {
     var newRoomRef = roomRef.push();
     var newRoomId = newRoomRef.key;
     newRoomRef.set({
-        
+        userid: 'userdata'
     });
     return newRoomId;
 }
@@ -29,9 +29,24 @@ function addUserToRoom(database, roomId, name){
     return newUserId;
 
 }
+function removeRoom(database, roomId){
+    var roomRef = database.ref('room/'+roomId);
+    roomRef.remove();
+}
 
 function removeUserFromRoom(database, roomId, userId){
     var roomRef = database.ref('room/'+roomId+'/'+userId);
     roomRef.remove();
+}
+
+// ユーザーを部屋から削除します。
+// 人数が0になった部屋は削除します。
+function logoutFromRoom(database, roomId, userId){
+    removeUserFromRoom(database, roomId, userId);
+    var userList = getUserFromRoom(database, userId);
+    if (userList.length == 1){
+        console.log('remove room'+roomId);
+        removeRoom();
+    }
 }
 
