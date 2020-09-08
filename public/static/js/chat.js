@@ -28,7 +28,7 @@ var chatRef=DataBase.ref("chat/roomid/");
 chatRef.on('value',function(snapshot){
     console.log("chatRef:"+chatRef);
     chatData=snapshot.val();
-    console.log("chatData:"+chatData);
+    //console.log("chatData:"+chatData);
     Object.keys(chatData).forEach(function(key){
         console.log("date:"+chatData[key]["date"]);
         console.log("name:"+chatData[key]["name"]);
