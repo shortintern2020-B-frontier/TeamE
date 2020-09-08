@@ -6,6 +6,7 @@
       <div class="contents-detail">
         <packageDetail :packagedata="packagedata" />
         <purchasedList :packagedata="packagedata" />
+        <routeMap />
       </div>
       <div class="button-container">
         <joinButton />
@@ -24,6 +25,7 @@ import packageDetail from "@/components/packageDetail.vue";
 import detailHero from "@/components/detailHero.vue";
 import purchasedList from "@/components/purchasedList.vue";
 import firebase from 'firebase'
+import routeMap from "@/components/routeMap.vue";
 
 export default {
   name: "detail",
@@ -32,7 +34,8 @@ export default {
     joinButton,
     packageDetail,
     purchasedList,
-    detailHero
+    detailHero,
+    routeMap
   },
   data:()=>({
     packagedata: {}
