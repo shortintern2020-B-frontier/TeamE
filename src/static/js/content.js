@@ -27,13 +27,14 @@ function SetContentMarkers(contentData, markers){
       title: contentData[key]["title"],
       url:contentData[key]["url"]
       });
-      markers.push(newMarker);
+      //meisho.k 2020/9/7
+      content_markers.push(newMarker);
     });
- 
-    //Meisho Kanaomi
-    for(let i=0; i<markers.length; i++){
+    //urlを埋め込む
+    //Meisho Kanaomi 2020/9/4
+    for(let i=0; i<content_markers.length; i++){
         //console.log(markers[i]);
-        google.maps.event.addListener(markers[i], 'click', (function(url){
-        return window.open(markers[i].url);}))
+        google.maps.event.addListener(content_markers[i], 'click', (function(url){
+        return window.open(content_markers[i].url);}))
     }
 }
