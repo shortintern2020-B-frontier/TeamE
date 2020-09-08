@@ -3,7 +3,7 @@
   <v-row id="flex-container">
     <v-col cols="3">
       <span class="font-weight-bold text-h4 pl-6">エリアから探す</span>
-      <v-card class="pb-2" v-for="region in regions" :key="region.region" :src="region.src" flat>
+      <v-card class="pb-2" v-for="region in regions" :key="region.region" :src="region.src" flat  v-on:click="region_choice=region.region">
         <v-img
           :src="region.src"
           class="white--text align-end"
@@ -69,7 +69,7 @@ export default {
         display: true
       }
     ],
-    preview: []
+    region_choice: ''
   })
 };
 </script>
