@@ -1,3 +1,4 @@
+//Meisho.Kanaomi 2020.9.8
 function updataAvatar(){
     var roomRef = DataBase.ref("room/"+roomId+"/"+userId)
         roomRef.update({
@@ -6,8 +7,6 @@ function updataAvatar(){
         avatar: my_avatar,
         })
 }
-
-
 function toNormal(){
     my_avatar = "../img/normal.png"
     updataAvatar()

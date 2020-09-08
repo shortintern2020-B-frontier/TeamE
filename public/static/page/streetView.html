@@ -35,7 +35,7 @@
   };
 
   // Initialize Firebase
-  //Meisho.K 2020/9/07
+  //Meisho.Kanaomi 2020/9/07
   firebase.initializeApp(firebaseConfig);
   var DataBase = firebase.database();
 </script>
@@ -69,7 +69,7 @@
         line-height: 30px;
         padding-left: 10px;
       }
-      /*　Meisho.K 2020.9.8 */
+      /*　Meisho.Kanaomi 2020.9.8 */
       #avatar-panel{
         position: absolute;
         top: 10px;
@@ -110,8 +110,8 @@
       var start_lng = params.get('start_lng');
       
       // テスト用
-      //Meisho.K 2020/9/7
-      //Meisho.K 2020.9.8
+      //Meisho.Kanaomi 2020/9/7
+      //Meisho.Kanaomi 2020.9.8
       if (roomId === null){
         roomId = '-MGa9n3IJ3iSSfMQ0vIl'
       }
@@ -169,7 +169,7 @@
         );
         panorama.setVisible(true);
 
-        //Meisho.K 2020/09/07
+        //Meisho.Kanaomi 2020/09/07
         //座標の移動に応じてdbに座標を更新する処理
         panorama.addListener("position_changed", () => {
         const tmp_position = panorama.getPosition();
@@ -201,6 +201,7 @@
         onclick="togglePins();"
       />
     </div>
+    <!-- 2020/9/8 Meisho.Kanaomi-->
     <div id="avatar-panel">
       <input
         type="button"
@@ -218,13 +219,13 @@
     <div id="map"></div>
 
    
-<!-- 2020/09/07 Meisho.K -->
+<!-- 2020/09/07 Meisho.Kanaomi -->
 <script src = "../js/map_setting.js"></script>
 <!-- 2020/09/08 Ryo Omae -->
 <script src = "../js/room.js"></script>
 <!-- 2020/09/07 Ryota Watanabe-->
 <script src = "../js/content.js"></script>
-<!-- 2020/09/08 Meisho.K-->
+<!-- 2020/09/08 Meisho.Kanaomi-->
 <script src = "../js/user.js"></script>
 <script src = "../js/avatar.js"></script>
 </body>
