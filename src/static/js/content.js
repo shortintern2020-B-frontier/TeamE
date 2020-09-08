@@ -13,7 +13,7 @@ function addContentToDatabase(database, contentData) {
 }
 
 //Ryota Watanabe 2020/09/07
-function SetContentMarkers(contentData){
+function SetContentMarkers(contentData, markers){
     //console.log(contentData);
     Object.keys(contentData).forEach(function(key){
       const newMarker = new google.maps.Marker({

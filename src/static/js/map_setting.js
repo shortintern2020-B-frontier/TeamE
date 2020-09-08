@@ -29,6 +29,7 @@ function togglePins() {
   }
 
 function setMapOnAll(map, markers){
+    console.log('setmaponall',markers);
     for(let i=0; i<markers.length; i++){
         markers[i].setMap(map);
     }
@@ -40,11 +41,12 @@ function hideMarkers(markers){
 }
 //markerを表示する
 function showMarkers(markers){
+    console.log(markers);
     setMapOnAll(map, markers);
 }
 
 //markerを消去する
 function deleteMarkers(markers){ 
-    hideMarkers();
+    hideMarkers(markers);
     markers=[];
 }
