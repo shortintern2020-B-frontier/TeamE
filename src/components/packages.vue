@@ -69,7 +69,7 @@ export default {
         display: true
       }
     ],
-    preview: []
+    region_choice: ''
   })
 };
 </script>
