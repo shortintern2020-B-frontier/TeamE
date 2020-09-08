@@ -94,12 +94,25 @@
       var start_lng = params.get('start_lng');
       
       // テスト用
-      roomId = '-MGa9n3IJ3iSSfMQ0vIl';
       //Meisho.K 2020/9/7
-      userId = "888888888"
-      userName = "RakutenTarou"
-      start_lat= 35.612250;//緯度 90以上指定すると壊れる
-      start_lng= 139.628361;//経度
+      //Meisho.K 2020.9.8
+      if (roomId === null){
+        roomId = '-MGa9n3IJ3iSSfMQ0vIl'
+      }
+      if (userId === null){
+        userId = "888888888"
+      }
+      if (userName === null){
+        userName = "RakutenTarou"
+      }
+
+      if (start_lat=== null | start_lng===null){
+        start_lat = 35.612250//緯度 90以上指定すると壊れる
+        start_lng= 139.628361//経度
+      }
+      ;
+   
+      
       // ここまで
 
       
