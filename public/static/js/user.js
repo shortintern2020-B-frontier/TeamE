@@ -8,7 +8,7 @@
     userData = snapshot.val();
     console.log('userdata', userData);
     userKeyList = Object.keys(userData);
-    userKeyList = userKeyList.filter(n => n != "roomid" && n != userId);
+    //userKeyList = userKeyList.filter(n => n != "roomid" && n != userId);
     var userList=[];
 
     deleteMarkers(user_markers);
@@ -22,7 +22,7 @@
           },
           map,
           icon:
-            "../img/pistol_pose_man.png",
+            userData[element]["avatar"],//Meisho.K 2020.9.8
           title:userData[element]["name"]//Meihso.K 2020.9.8
         });
       user_markers.push(marker);
