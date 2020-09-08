@@ -189,7 +189,7 @@
 <script>
   // Ryo Omae
   // アバター位置情報更新処理
-  var roomRef = database.ref('room/'+roomid);
+  var roomRef = DataBase.ref('room/'+roomId);
   var userData
   var userKeyList;
   roomRef.on('value', function(snapshot){
