@@ -1,3 +1,5 @@
+<!-- @author ISSEI MIYAMOTO -->
+
 <template>
   <v-card class="mx-auto" max-width="360px" outlined style="padding: 0;">
     <div class="new-tour container">

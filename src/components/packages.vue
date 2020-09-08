@@ -2,8 +2,8 @@
   <!-- <v-container class="ma-0 pa-0" fluid> -->
   <v-row id="flex-container">
     <v-col cols="3">
-      <span class="font-weight-bold text-h4 pl-6">エリアから探す</span>
-      <v-card class="pb-2" v-for="region in regions" :key="region.region" :src="region.src" flat  v-on:click="region_choice=region.region">
+      <span class="font-weight-bold text-h5 pl-6">エリアから探す</span>
+      <v-card class="pb-2" v-for="region in regions" :key="region.region" :src="region.src" flat>
         <v-img
           :src="region.src"
           class="white--text align-end"
@@ -18,7 +18,7 @@
     <v-divider vertical class="mt-2"></v-divider>
 
     <v-col cols="8">
-      <span class="packs font-weight-bold text-h4 pl-6">パッケージ一覧</span>
+      <span class="packs font-weight-bold text-h5 pl-6">パッケージ一覧</span>
       <v-divider class="mb-2" id="divider-top"></v-divider>
       <router-link to="/detail">
         <v-card class="pb-2" v-for="item in items" :key="item.title" :src="item.src" flat>
