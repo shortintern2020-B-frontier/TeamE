@@ -198,48 +198,9 @@
 <script src = "../js/map_setting.js"></script>
 <!-- 2020/09/08 Ryo Omae -->
 <script src = "../js/room.js"></script>
-<script src = "../js/user.js"></script>
 <!-- 2020/09/07 Ryota Watanabe-->
 <script src = "../js/content.js"></script>
-
-<!--処理系は以下に書く-->
-<script>
-  // 2020/09/08 Ryo Omae
-  // アバター位置情報更新処理
-  var roomRef = DataBase.ref('room/'+roomId);
-  var userData
-  var userKeyList;
-  roomRef.on('value', function(snapshot){
-    console.log('roomref on');
-    userData = snapshot.val();
-    console.log('userdata', userData);
-    userKeyList = Object.keys(userData);
-    userKeyList = userKeyList.filter(n => n != "roomid" && n != userId);
-    var userList=[];
-
-    deleteMarkers(user_markers);
-    user_markers = [];
-
-    userKeyList.forEach(element => {
-      var marker = new google.maps.Marker({
-          position: {
-            lat: userData[element]['lat'],
-            lng: userData[element]['lng']
-          },
-          map,
-          icon:
-            "../img/pistol_pose_man.png",
-          title:userData[element]["name"]//Meihso.K 2020.9.8
-        });
-      user_markers.push(marker);
-    });
-
-    });
-    
-    //ToDo: googlemapsにタグの更新 
-    //contentList = getContent
-    //updatePosition(database, name, roomId, userId)
-
-</script>
+<!-- 2020/09/08 Meisho.K-->
+<script src = "../js/user.js"></script>
 </body>
 </html>

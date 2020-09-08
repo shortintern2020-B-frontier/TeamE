@@ -1,3 +1,7 @@
+/* 
+   @auther Tomoharu Yanase
+ */
+
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
@@ -12,7 +16,7 @@ const routes = [
     component: Home
   },
   {
-    path: "/detail",
+    path: "/detail/:id",
     name: "Detail",
     component: Detail
   },
