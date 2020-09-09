@@ -24,26 +24,26 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyD6VaOrWy9iANa9hJymbptL7YDC7PKZ6hM",
-        authDomain: "rakuten-intern2020-b5.firebaseapp.com",
-        databaseURL: "https://rakuten-intern2020-b5.firebaseio.com",
-        projectId: "rakuten-intern2020-b5",
-        storageBucket: "rakuten-intern2020-b5.appspot.com",
-        messagingSenderId: "677223095236",
-        appId: "1:677223095236:web:683056011b10dc74c5e291"
-      };
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyD6VaOrWy9iANa9hJymbptL7YDC7PKZ6hM",
+      authDomain: "rakuten-intern2020-b5.firebaseapp.com",
+      databaseURL: "https://rakuten-intern2020-b5.firebaseio.com",
+      projectId: "rakuten-intern2020-b5",
+      storageBucket: "rakuten-intern2020-b5.appspot.com",
+      messagingSenderId: "677223095236",
+      appId: "1:677223095236:web:683056011b10dc74c5e291"
+    };
 
-      // Initialize Firebase
-      //Meisho.K 2020/9/07
-      firebase.initializeApp(firebaseConfig);
-      var DataBase = firebase.database();
-    </script>
+    // Initialize Firebase
+    //Meisho.K 2020/9/07
+    firebase.initializeApp(firebaseConfig);
+    var DataBase = firebase.database();
+  </script>
 
-    <style type="text/css">
-      /* Always set the map height explicitly to define the size of the div
+  <style type="text/css">
+    /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
         height: 100%;
@@ -489,11 +489,6 @@
         start_lat = 35.03967366595888; //緯度 90以上指定すると壊れる
         start_lng = 135.7284317640296; //経度
       }
-
-      // ルームIDを画面に表示する処理
-      var roomid_wrapper = document.getElementById("roomid_wrapper");
-      roomid_wrapper.innerHTML = roomId;
-      // ここまで
 
       //console.log('aaa');
       function initMap() {
