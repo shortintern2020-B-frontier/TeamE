@@ -1,23 +1,25 @@
-name: prettifier
+name: Pretter
 
 on:
-  push:
-    branches:
-      - dev
+ push:
+   branches:
+     - dev
+
+env:
+ FILE_PATTERN: "{src,__tests__}/**/*.{ts,tsx,js,jsx}"
 
 jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
-    strategy:
-    matrix:
-        node-version: [12.x]
-    steps:
-    - name: check out master
-      uses: actions/checkout@master
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@master
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: test
-      run: echo "test"
-    
+ lint:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v2
+     - uses: actions/setup-node@v1
+       with:
+         node-version: 12.x
+     - name: Run Prettier
+       run: |
+         yarn install
+         yarn prettier --write ${FILE_PATTERN}
+     - uses: stefanzweifel/git-auto-commit-action@v3.0.0
+       with:
+         commit_message: Apply Prettier Change
