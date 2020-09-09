@@ -15,7 +15,7 @@ send.addEventListener('click',function(){
     var mi = ("0"+now.getMinutes()).slice(-2);
     var ss = ("0"+now.getSeconds()).slice(-2);
 
-    DataBase.ref("chat/"+"roomid/"+commentid).update({
+    DataBase.ref("chat/"+"roomid/").push({
         comment:message.value,
         date:yyyy+"-"+mm+"-"+dd+" "+hh+":"+mi+":"+ss,
         name:userName
