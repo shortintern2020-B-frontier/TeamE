@@ -3,6 +3,8 @@
 const send = document.getElementById("send");
 const message = document.getElementById("message");
 const msg=document.getElementById("messages");
+const chatHistory = document.getElementById("messageBody");
+
 var commentid = "-MGgFpByYA0l9TQ_MTXb";
 var str="";
 
@@ -67,7 +69,7 @@ chatRef.once('value',function(snapshot){
         str+=str1;
         msg.innerHTML=str;
     })
-    
+    chatHistory.scrollTop = chatHistory.scrollHeight;
 })
 
 //コメントの表示更新機能
@@ -94,6 +96,7 @@ chatRef.on('value',function(snapshot){
     str+=str1;
     msg.innerHTML=str;
     //console.log("str1:"+str1)
+    chatHistory.scrollTop = chatHistory.scrollHeight;
 })
 
 
