@@ -21,8 +21,9 @@
             lng: userData[element]['lng']
           },
           map,
-          icon:
-            userData[element]["avatar"],//Meisho.Kanaomi 2020.9.8
+          icon:userData[element]["avatar"],
+          
+            //Meisho.Kanaomi 2020.9.8
           title:userData[element]["name"]//Meihso.Kanaomi 2020.9.8
         });
       user_markers.push(marker);

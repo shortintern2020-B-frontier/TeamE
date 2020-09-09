@@ -6,19 +6,20 @@ function updataAvatar(){
         name: userName,
         avatar: my_avatar,
         })
+    //Meisho.Kanaomi 2020.9.9
+    var avatar_element = document.getElementById("my_avatar_img");
+    avatar_element.src = my_avatar
+    console.log(avatar_element.src)
 }
 function toNormal(){
     my_avatar = "../img/normal.png"
     updataAvatar()
-    console.log(my_avatar)
 }
 function toSad(){
     my_avatar = "../img/sad.png"
     updataAvatar()
-    console.log(my_avatar)
 }
 function toHappy(){
     my_avatar = "../img/happy.png"
     updataAvatar()
-    console.log(my_avatar)
 }
