@@ -1,6 +1,11 @@
 // Funcitons to control database
 // Ryo Omae
 
+// / ルームIDを画面に表示する処理
+var roomid_wrapper = document.getElementById("roomid_wrapper");
+roomid_wrapper.innerHTML = roomId;
+// ここまで
+
 
 {/* input: ref to database
 output: roomid */}
@@ -29,6 +34,21 @@ function addUserToRoom(database, roomId, name){
     return newUserId;
 
 }
+
+function addContentToDatabase(img, lat, lng, title, url){
+    var roomRef = DataBase.ref('content/');
+    var newContentRef = roomRef.push();
+    var newContentId = newContentRef.key;
+    newContentRef.set({
+        img: img,
+        title: title,
+        lat: lat ,
+        lng: lng ,
+        url: url
+    });
+    return newContentId;
+}
+
 function removeRoom(database, roomId){
     var roomRef = database.ref('room/'+roomId);
     roomRef.remove();
