@@ -4,6 +4,7 @@ on:
  push:
    branches:
      - dev
+     - master 
 
 env:
  FILE_PATTERN: "{src,__tests__}/**/*.{ts,tsx,js,jsx}"
