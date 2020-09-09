@@ -1,20 +1,21 @@
+/**
+ * @author Kota Yukawa
+ */
+
 <template>
   <div class="route-map">
-    <div class="detail-container">
+    <div class="title-container">
       <h6>ルートマップ</h6>
-      <p><v-img :src="src"/>}</p>
+    </div>
+    <div class="detail-container">
+      <p><v-img :src="packagedata.route_image"/></p>
     </div>
   </div>
 
 </template>
 <script>
 export default {
-    data: () => {
-        return {
-            src: require('@/assets/routes/kyoto.png')
-        }
-    }
-    
+  props: ['packagedata']
 };
 </script>
 

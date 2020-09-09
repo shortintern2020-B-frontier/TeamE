@@ -1,9 +1,22 @@
+/**
+ * @author Tomoharu Yanase
+ */
 <template>
   <!-- <v-container class="ma-0 pa-0" fluid> -->
   <v-row id="flex-container">
     <v-col cols="3">
       <span class="font-weight-bold text-h4 pl-6">エリアから探す</span>
-      <v-card class="pb-2" v-for="region in regions" :key="region.region" :src="region.src" flat  v-on:click="region_choice=region.region">
+      <v-card class="pb-2"  flat v-on:click="triggerEvent('')">
+        <v-img
+          :src="allimage"
+          class="white--text align-end"
+          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+          height="120px"
+        >
+          <v-card-title class="white--text align-end" v-text="'全て表示'"></v-card-title>
+        </v-img>
+      </v-card>
+      <v-card class="pb-2" v-for="region in regions" :key="region.region" :src="region.src" flat  @click="triggerEvent(region.region)">
         <v-img
           :src="region.src"
           class="white--text align-end"
@@ -18,21 +31,43 @@
     <v-divider vertical class="mt-2"></v-divider>
 
     <v-col cols="8">
+      <div v-if="filter==='notfound'">
+        パッケージが見つかりませんでした。
+      </div>
+      <div v-else-if="Object.keys(filter).length">
+        <span class="packs font-weight-bold text-h4 pl-6">{{ region_choice }}</span>
+        <v-divider class="mb-2" id="divider-top"></v-divider>
+          <v-card class="pb-2" v-for="(regionitem, index) in filter" :key="regionitem.package_name" :src="regionitem.package_image" flat>
+            <router-link :to="{ name: 'Detail',params: { id: index }}">
+            <v-img
+              :src="regionitem.package_image"
+              class="white--text align-end"
+              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+              height="500px"
+            >
+              <v-card-title class="white--text align-end" v-text="regionitem.package_name"></v-card-title>
+            </v-img>
+            <v-divider class="mt-2"></v-divider>
+            </router-link>
+          </v-card>
+      </div>
+      <div v-else>
       <span class="packs font-weight-bold text-h4 pl-6">パッケージ一覧</span>
       <v-divider class="mb-2" id="divider-top"></v-divider>
-      <router-link to="/detail">
-        <v-card class="pb-2" v-for="item in items" :key="item.title" :src="item.src" flat>
+        <v-card class="pb-2" v-for="(item, index) in val" :key="item.package_name" :src="item.package_image" flat>
+          <router-link :to="{ name: 'Detail',params: { id: index }}">
           <v-img
-            :src="item.src"
+            :src="item.package_image"
             class="white--text align-end"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="500px"
           >
-            <v-card-title class="white--text align-end" v-text="item.title"></v-card-title>
+            <v-card-title class="white--text align-end" v-text="item.package_name"></v-card-title>
           </v-img>
           <v-divider class="mt-2"></v-divider>
+          </router-link>
         </v-card>
-      </router-link>
+      </div>
     </v-col>
   </v-row>
   <!-- </v-container> -->
@@ -40,6 +75,11 @@
 
 <script>
 export default {
+  props: [
+    'val',
+    'filter',
+    ],
+ 
   data: () => ({
     regions: [
       { region: "北海道", src: require("@/assets/Hokkaido.jpg") },
@@ -47,30 +87,19 @@ export default {
       { region: "東京", src: require("@/assets/Tokyo.jpg") },
       { region: "京都", src: require("@/assets/Kyoto.jpg") },
       { region: "大阪", src: require("@/assets/Osaka.jpg") },
-      { region: "沖縄", src: require("@/assets/Okinawa.jpg") }
+      { region: "沖縄", src: require("@/assets/Okinawa.jpg") },
     ],
-    items: [
-      {
-        title: "札幌市内の繁華街「すすきの」巡り",
-        region: "北海道",
-        src: require("@/assets/Sapporo.jpg"),
-        display: true
-      },
-      {
-        title: "京都の名所巡りの旅",
-        region: "京都",
-        src: require("@/assets/Kinkakuji.jpg"),
-        display: true
-      },
-      {
-        title: "二子玉川スペシャルツアー",
-        region: "東京",
-        src: require("@/assets/Hutakotamagawa.jpg"),
-        display: true
-      }
-    ],
-    region_choice: ''
-  })
+    region_choice: '',
+    allimage: require("@/assets/Okinawa.jpg")
+  }),
+
+
+  methods:{
+    triggerEvent:function(re){
+      this.region_choice=re;
+      this.$emit('send-event',this.region_choice);
+    }
+  },
 };
 </script>
 

@@ -21,13 +21,15 @@
             lng: userData[element]['lng']
           },
           map,
-          icon:
-            "../img/pistol_pose_man.png",
-          title:userData[element]["name"]//Meihso.K 2020.9.8
+          icon:{
+            url:userData[element]["avatar"],//Meisho.Kanaomi 2020.9.8
+            scaledSize: new google.maps.Size(200,200)//Meisho.Kanaomi 2020.9.9
+          },
+          title:userData[element]["name"]//Meihso.Kanaomi 2020.9.8
         });
       user_markers.push(marker);
     });
-    //Meisho.K 2020.9.8
+    //Meisho.Kanaomi 2020.9.8
     //画像をクリックしたらその位置へと移動
     for(let i=0; i<user_markers.length; i++){
         google.maps.event.addListener(user_markers[i], 'click', (function(url){
