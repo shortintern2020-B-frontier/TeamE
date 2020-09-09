@@ -1,12 +1,8 @@
 /** * @author Kota Yukawa */
 
 <template>
-  <v-parallax
-    dark
-    v-bind:src="assetsImage"
-    id="para-container"
-    style="opacity: .9;"
-  >
+<div>
+  <v-parallax dark v-bind:src="assetsImage">
     <v-container fluid>
       <v-row align="center" justify="center" align-content="center">
         <v-col class="text-center">
@@ -17,18 +13,27 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-form ref="form">
-      <v-text-field background-color="white" label="search"></v-text-field>
-    </v-form>
+      <v-form ref="form">
+        <v-text-field
+          v-model="keyword"
+          background-color="white"
+          label="search"
+        ></v-text-field>
+      </v-form>
   </v-parallax>
+</div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      assetsImage: require("@/assets/homeHero.jpg")
+      assetsImage: require('@/assets/homeHero.jpg'),
+      keyword:'',
     };
-  }
+  },
+  props:[
+    'datas',
+  ]
 };
 </script>
