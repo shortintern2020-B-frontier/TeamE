@@ -57,30 +57,19 @@
         <v-divider class="mb-2" id="divider-top"></v-divider>
       </div>
       <div v-else>
-        <span class="packs font-weight-bold text-h4 pl-6">パッケージ一覧</span>
-        <v-divider class="mb-2" id="divider-top"></v-divider>
-        <router-link to="/detail">
-          <v-card
-            class="pb-2"
-            v-for="item in val"
-            :key="item.package_name"
+      <span class="packs font-weight-bold text-h4 pl-6">パッケージ一覧</span>
+      <v-divider class="mb-2" id="divider-top"></v-divider>
+        <v-card class="pb-2" v-for="(item, index) in val" :key="item.package_name" :src="item.package_image" flat>
+          <router-link :to="{ name: 'Detail',params: { id: index }}">
+          <v-img
             :src="item.package_image"
             flat
           >
-            <v-img
-              :src="item.package_image"
-              class="white--text align-end"
-              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-              height="500px"
-            >
-              <v-card-title
-                class="white--text align-end"
-                v-text="item.package_name"
-              ></v-card-title>
-            </v-img>
-            <v-divider class="mt-2"></v-divider>
-          </v-card>
-        </router-link>
+            <v-card-title class="white--text align-end" v-text="item.package_name"></v-card-title>
+          </v-img>
+          <v-divider class="mt-2"></v-divider>
+          </router-link>
+        </v-card>
       </div>
     </v-col>
   </v-row>
