@@ -45,14 +45,15 @@ send.addEventListener('click',function(){
 //コメントの初期表示
 var chatRef=DataBase.ref("chat/"+roomId);
 chatRef.once('value',function(snapshot){
+    str="";
     chatData=snapshot.val();
 
     if(chatData==undefined) return;
     
     Object.keys(chatData).forEach(function(key){
-        console.log("date:"+chatData[key]["date"]);
-        console.log("name:"+chatData[key]["name"]);
-        console.log("comment:"+chatData[key]["comment"]);
+        // console.log("date:"+chatData[key]["date"]);
+        // console.log("name:"+chatData[key]["name"]);
+        // console.log("comment:"+chatData[key]["comment"]);
         let str1 =
             //   "<div class='message-item1'><div class='img-item'><img src=" +
             //   v.icon +
