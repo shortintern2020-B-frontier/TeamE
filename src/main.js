@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import * as VueGoogleMaps from 'vue2-google-maps'
-import vuetify from './plugins/vuetify';
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import * as VueGoogleMaps from "vue2-google-maps";
+import vuetify from "./plugins/vuetify";
 import firebase from "firebase";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 var firebaseConfig = {
     apiKey: "AIzaSyD6VaOrWy9iANa9hJymbptL7YDC7PKZ6hM",
@@ -21,18 +21,17 @@ firebase.initializeApp(firebaseConfig);
 
 window.firebase = firebase;
 
-
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'APIKEY',
-    libraries: 'places',
-    region: 'JP',
-    language: 'ja'
+    key: "APIKEY",
+    libraries: "places",
+    region: "JP",
+    language: "ja"
   }
-})
+});
 
 new Vue({
   router,
   vuetify,
   render: h => h(App)
-}).$mount('#app')
+}).$mount("#app");
