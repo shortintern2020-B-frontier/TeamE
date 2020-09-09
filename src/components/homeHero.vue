@@ -19,15 +19,27 @@
           label="search"
         ></v-text-field>
       </v-form>
+      <transition>
       <div v-if="keyword.length">
-      <v-card flat>
-        <li v-for="item in searched" :key="item.package_name">
-          <router-link :to="{ name: 'Detail',params: { id: item.package_id }}">
-          {{ item.package_name }}
-          </router-link>
-        </li>
-      </v-card>
-    </div>
+        <v-row>
+          <v-col cols="8">
+            <v-card raised elevation="24" hover>
+            <v-card-title>検索結果</v-card-title>
+            <v-divider></v-divider>
+            <!--<transition-group name="anime-list">-->
+              <v-list rounded shaped transition="scroll-y-transition">
+                <transition-group name="anime-list">
+                <v-list-item v-for="item in searched" :key="item.package_name" :to="{ name: 'Detail',params: { id: item.package_id }}">
+                  {{ item.package_name }}
+                </v-list-item>
+                </transition-group>
+              </v-list>
+            <!--</transition-group>-->
+            </v-card>
+          </v-col>
+        </v-row>
+      </div>
+      </transition>
   </v-parallax>
 </template>
 
@@ -56,3 +68,36 @@ export default {
   ]
 };
 </script>
+
+<style scoped>
+.v-enter {
+  opacity: 0;
+}
+.v-enter-active {
+  transition: opacity 1s
+}
+.v-enter-to {
+  opacity: 1;
+}
+.v-leave {
+  opacity: 1;
+}
+.v-leave-active {
+  transition: opacity 1s;
+}
+.v-leave-to {
+  opacity: 0;
+}
+
+
+.anime-list-enter {
+  transform: translate(-100px, 0);
+  opacity: 0;
+}
+.anime-list-enter-to {
+  opacity: 1;
+}
+.anime-list-enter-active {
+  transition: all 1s 0s ease;
+}
+</style>
