@@ -1,108 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- @author ISSEI MIYAMOTO -->
-    <div class="drawer">
-      <input type="checkbox" id="drawer-check" class="drawer-hidden" />
-      <label for="drawer-check" class="drawer-open">
-        <span></span>
-      </label>
-
-      <div class="drawer-content">
-        <div class="tab-wrap">
-          <input
-            id="TAB-01"
-            type="radio"
-            name="TAB"
-            class="tab-switch"
-            checked="checked"
-          />
-          <label class="tab-label" for="TAB-01">ルーム情報</label>
-          <div class="tab-content">
-            <div class="content-container">
-              <div class="participant-container">
-                <p class="participant-title">参加者一覧</p>
-
-                <div class="members">
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>Ryo Omae</p>
-                  </div>
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>Meisho Kanaomi</p>
-                  </div>
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>Ryota Watanabe</p>
-                  </div>
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>Tomoharu Yanase</p>
-                  </div>
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>Kota Yukawa</p>
-                  </div>
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>ISSEY MIYAMOTO</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="chara-container">
-                <p>文字サイズ</p>
-
-                <div class="font-container">
-                  <button type="button" class="bigger btn">大</button>
-                  <button type="button" class="smaller btn">小</button>
-                </div>
-              </div>
-
-              <div class="tourID-container">
-                <p class="id-title">ツアーID</p>
-
-                <div class="id-wrapper" >
-                  <p id="roomid_wrapper">xxxxxxxxxxx</p>
-                </div>
-                <!-- Ryo Omae -->
-                <button class="remove-btn" onclick="logoutFromRoom(DataBase, roomId, userId);">退出する</button> 
-              </div>
-            </div>
-          </div>
-          <input id="TAB-02" type="radio" name="TAB" class="tab-switch" />
-          <label class="tab-label" for="TAB-02">チャット情報</label>
-          <div class="tab-content">
-            <div class="chat-container">
-              <div class="messages-container">
-                <div class="message">
-                  <div class="user-name">test user</div>
-                  <div class="message-content">これでええかな？</div>
-                </div>
-                <div class="message">
-                  <div class="user-name">test user</div>
-                  <div class="message-content">これでええかな？</div>
-                </div>
-                <div class="message">
-                  <div class="user-name">test user</div>
-                  <div class="message-content">これでええかな？</div>
-                </div>
-              </div>
-              <div class="send-container">
-                <textarea
-                  cols="1"
-                  rows="1"
-                  placeholder="メッセージを送信"
-                  id="message"
-                ></textarea>
-                <button id="send">送信</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <!-- Watanabe -->
     <title>Overlays Within Street View</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -156,6 +55,12 @@
         height: 100%;
         margin: 0;
         padding: 0;
+      }
+
+      #top-button {
+        position: absolute;
+        top: 0px;
+        left: 10%;
       }
 
       #floating-panel {
@@ -649,18 +554,124 @@
   <body>
 
     <header>
-      <input
-        type="image"
-        value="top page"
-        onclick="location.href='/';"
-      />
-      <div id="floating-panel">
+      <div id="header">
+        <!-- @author ISSEI MIYAMOTO -->
+        <div class="drawer">
+          <input type="checkbox" id="drawer-check" class="drawer-hidden" />
+          <label for="drawer-check" class="drawer-open">
+            <span></span>
+          </label>
+
+          <div class="drawer-content">
+            <div class="tab-wrap">
+              <input
+                id="TAB-01"
+                type="radio"
+                name="TAB"
+                class="tab-switch"
+                checked="checked"
+              />
+              <label class="tab-label" for="TAB-01">ルーム情報</label>
+              <div class="tab-content">
+                <div class="content-container">
+                  <div class="participant-container">
+                    <p class="participant-title">参加者一覧</p>
+
+                    <div class="members">
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>Ryo Omae</p>
+                      </div>
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>Meisho Kanaomi</p>
+                      </div>
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>Ryota Watanabe</p>
+                      </div>
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>Tomoharu Yanase</p>
+                      </div>
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>Kota Yukawa</p>
+                      </div>
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>ISSEY MIYAMOTO</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="chara-container">
+                    <p>文字サイズ</p>
+
+                    <div class="font-container">
+                      <button type="button" class="bigger btn">大</button>
+                      <button type="button" class="smaller btn">小</button>
+                    </div>
+                  </div>
+
+                  <div class="tourID-container">
+                    <p class="id-title">ツアーID</p>
+
+                    <div class="id-wrapper" >
+                      <p id="roomid_wrapper">xxxxxxxxxxx</p>
+                    </div>
+                    <!-- Ryo Omae -->
+                    <button class="remove-btn" onclick="logoutFromRoom(DataBase, roomId, userId);">退出する</button> 
+                  </div>
+                </div>
+              </div>
+              <input id="TAB-02" type="radio" name="TAB" class="tab-switch" />
+              <label class="tab-label" for="TAB-02">チャット情報</label>
+              <div class="tab-content">
+                <div class="chat-container">
+                  <div class="messages-container">
+                    <div class="message">
+                      <div class="user-name">test user</div>
+                      <div class="message-content">これでええかな？</div>
+                    </div>
+                    <div class="message">
+                      <div class="user-name">test user</div>
+                      <div class="message-content">これでええかな？</div>
+                    </div>
+                    <div class="message">
+                      <div class="user-name">test user</div>
+                      <div class="message-content">これでええかな？</div>
+                    </div>
+                  </div>
+                  <div class="send-container">
+                    <textarea
+                      cols="1"
+                      rows="1"
+                      placeholder="メッセージを送信"
+                      id="message"
+                    ></textarea>
+                    <button id="send">送信</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="top-button">
+          <input
+          type="image"
+          value="top page"
+          onclick="location.href='/';"
+          src="../img/toppage.png"
+          />
+        </div>
+        <div id="floating-panel">
         <input
           type="button"
-          value="Toggle Street View"
+          value="歩行画面に移行"
+          height=50pt
           onclick="toggleStreetView();"
         />
-        <input type="button" value="Toggle Pins" onclick="togglePins();" />
       </div>
 
       <!-- 2020/9/8 Meisho.Kanaomi-->
@@ -688,6 +699,8 @@
           src="../img/normal.png"/>
         </div>
       </div>
+      </div>
+      
     </header>
     
     
