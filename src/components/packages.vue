@@ -37,7 +37,7 @@
       <div v-else-if="Object.keys(filter).length">
         <span class="packs font-weight-bold text-h4 pl-6">{{ region_choice }}</span>
         <v-divider class="mb-2" id="divider-top"></v-divider>
-          <v-card class="pb-2" v-for="regionitem in filter" :key="regionitem.package_name" :src="regionitem.package_image" flat>
+          <v-card class="pb-2" v-for="(regionitem, index) in filter" :key="regionitem.package_name" :src="regionitem.package_image" flat>
             <router-link :to="{ name: 'Detail',params: { id: index }}">
             <v-img
               :src="regionitem.package_image"
@@ -54,7 +54,7 @@
       <div v-else>
       <span class="packs font-weight-bold text-h4 pl-6">パッケージ一覧</span>
       <v-divider class="mb-2" id="divider-top"></v-divider>
-        <v-card class="pb-2" v-for="item in val" :key="item.package_name" :src="item.package_image" flat>
+        <v-card class="pb-2" v-for="(item, index) in val" :key="item.package_name" :src="item.package_image" flat>
           <router-link :to="{ name: 'Detail',params: { id: index }}">
           <v-img
             :src="item.package_image"
