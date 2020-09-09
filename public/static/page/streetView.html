@@ -87,17 +87,21 @@
         left: 0;
         right: 0;
         z-index: 5;
-        width: 600px;
+                 width: 400px;
         margin: auto;
         background-color: #fff;
         padding: 5px;
         border: 1px solid #999;
-        text-align: center;
+                  text-align: center;
         font-family: "Roboto", "sans-serif";
         line-height: 30px;
         padding-left: 10px;
       }
 
+      #walker{
+        position: absolute;
+        right: 0px;
+      }
       #floating-panel {
         left: 10%;
         border-style: hidden;
@@ -670,16 +674,22 @@
           <input
             type="image"
             value="normal"
+            height=60pt
+            width=60pt
             onclick="toNormal();"
             src="../img/emote/normal.png"/>
           <input
             type="image"
             value="happy"
+            height=60pt
+            width=60pt
             onclick="toHappy();"
             src="../img/emote/happy.png"/>
           <input
             type="image"
             value="sad"
+            height=60pt
+            width=60pt
             onclick="toSad();"
             src="../img/emote/sad.png"/>
           <input
@@ -692,6 +702,7 @@
         <div id="vline1" class="verticalLine"></div>
         <div id="floating-panel">
           <input
+            id="walker"
             type="image"
             value="歩行画面に移行"
             height=50pt
