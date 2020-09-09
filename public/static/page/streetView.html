@@ -659,14 +659,30 @@
     </div>
     <!-- 2020/9/8 Meisho.Kanaomi-->
     <div id="avatar-panel">
-      <input type="button" value="normal" onclick="toNormal();" />
-      <input type="button" value="happy" onclick="toHappy();" />
-      <input type="button" value="sad" onclick="toSad();" />
+      <input
+        type="button"
+        value="normal"
+        onclick="toNormal();"/>
+      <input
+        type="button"
+        value="happy"
+        onclick="toHappy();"/>
+        <input
+        type="button"
+        value="sad"
+        onclick="toSad();"/>
+        <input
+        id="my_avatar_img"
+        type="image"
+        height=30pt
+        width=30pt
+        src="../img/normal.png"/>
+      </div>
     </div>
-    <div>
-      Message<br /><textarea id="message" rows="3"></textarea><br />
-      <br />
-      <button id="send">send</button>
+    <div> Message<br><textarea id="message" rows="3"></textarea><br>
+      <br>
+      <button id="send"> send </button>
+      <button id="remove_comments"> remove_comments </button>
     </div>
     <div id="map"></div>
 

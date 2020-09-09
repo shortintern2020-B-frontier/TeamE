@@ -6,7 +6,7 @@
       <div class="contents-detail">
         <packageDetail :packagedata="packagedata" />
         <purchasedList :packagedata="packagedata" />
-        <routeMap />
+        <routeMap :packagedata="packagedata" />
       </div>
       <div class="button-container">
         <joinButton />
