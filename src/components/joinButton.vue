@@ -18,30 +18,16 @@
 </template>
 
 <script>
-import {makeRoom} from '../../public/static/js/room.js';
+// import {makeRoom} from '../../public/static/js/room.js';
 import firebase from 'firebase';
 export default {
   data: function () {
     return {};
   },
-  // mounted() {
-  //   let makeRoom = document.createElement('script')
-  //   makeRoom.setAttribute('src', '../../public/static/js/room.js')
-  // },
+  mounted() {
+  },
+  // 2020/09/09 Ryo Omae
   methods: {
-    makeNewRoom: function () {
-      console.log(this.make_name);
-      console.log('makeroom');
-      var newRoomId = makeRoom(firebase.database());
-      console.log(newRoomId)
-
-
-    },
-    joinRoom: function () {
-      console.log(this.join_name);
-      console.log(this.join_roomid);
-      console.log('joinroom');
-    },
     makeRoom: function () {
       var roomRef = firebase.database().ref('room/');
       var newRoomRef = roomRef.push();
@@ -50,7 +36,40 @@ export default {
           roomid: newRoomId
       });
       return newRoomId;
+    },
+    addUserToRoom: function(roomId, name, lat=45.0, lng=45.0){
+    var roomRef = firebase.database().ref('room/'+roomId);
+    var newUserRef = roomRef.push();
+    var newUserId = newUserRef.key;
+    newUserRef.set({
+        userid: newUserId,
+        name: name,
+        lat: lat ,
+        lng: lng ,
+    });
+    return newUserId;
+
+    },
+    makeNewRoom: function () {
+      console.log(this.make_name);
+      console.log('makeroom');
+      var newRoomId = this.makeRoom(firebase.database());
+      var newUserId = this.addUserToRoom(newRoomId, this.make_name);
+      console.log(newRoomId);
+      console.log(newUserId);
+      location.href='./static/page/streetView.html?roomid='+newRoomId+'&userid='+newUserId+'&username='+this.make_name;
+    },
+    joinRoom: function () {
+      console.log(this.join_name);
+      console.log(this.join_roomid);
+      var newUserId = this.addUserToRoom(this.join_roomid, this.join_name);
+      console.log(newUserId);
+      console.log('joinroom');
+
+      location.href='./static/page/streetView.html?roomid='+this.join_roomid+'&userid='+newUserId+'&username='+this.join_name;
+
     }
+    
   }
 }
 
