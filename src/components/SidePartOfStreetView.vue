@@ -118,8 +118,8 @@
 
 .drawer-content {
   padding: 0;
-  width: 240px;
-  height: 480px;
+  width: 360px;
+  height: 600px;
   border: solid 1px gray;
   border-radius: 5px;
 }
