@@ -4,17 +4,42 @@
   <v-card class="mx-auto" max-width="360px" outlined style="padding: 0;">
     <div class="new-tour container">
       <p>このツアーで旅行を始める</p>
-      <input type="text" placeholder="ニックネーム" />
-      <button>新規作成</button>
+      <input type="text" v-model="make_name" placeholder="ニックネーム" />
+      <button v-on:click="makeNewRoom">新規作成</button>
     </div>
     <div class="exist-tour container">
       <p>友達が開始した旅行に参加する</p>
-      <input type="text" placeholder="ニックネーム" />
-      <input type="text" placeholder="ルームID" />
-      <button onclick="location.href='./static/page/streetView.html'">参加する</button>
+      <input type="text" v-model="join_name" placeholder="ニックネーム" />
+      <input type="text" v-model="join_roomid" placeholder="ルームID" />
+      <button v-on:click="joinRoom">参加する</button>
+      <!-- <button onclick="location.href='./static/page/streetView.html'">参加する</button> -->
     </div>
   </v-card>
 </template>
+
+<script>
+import {makeRoom} from '../../public/static/js/room.js';
+import firebase from 'firebase';
+export default {
+  data: function () {
+    return {};
+  },
+  methods: {
+    makeNewRoom: function () {
+      console.log(this.make_name);
+      console.log('makeroom');
+      makeRoom(firebase.database);
+
+    },
+    joinRoom: function () {
+      console.log(this.join_name);
+      console.log(this.join_roomid);
+      console.log('joinroom');
+    }
+  }
+}
+
+</script>
 
 <style lang="css">
 .container p {
