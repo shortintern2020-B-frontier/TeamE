@@ -63,10 +63,11 @@
               <div class="tourID-container">
                 <p class="id-title">ツアーID</p>
 
-                <div class="id-wrapper">
-                  <p>xxxxxxxxxxx</p>
+                <div class="id-wrapper" >
+                  <p id="roomid_wrapper">xxxxxxxxxxx</p>
                 </div>
-                <button class="remove-btn" onclick="logoutFromRoom(DataBase, roomId, userId);">退出する</button>
+                <!-- Ryo Omae -->
+                <button class="remove-btn" onclick="logoutFromRoom(DataBase, roomId, userId);">退出する</button> 
               </div>
             </div>
           </div>
@@ -582,6 +583,10 @@
         start_lat = 35.03967366595888; //緯度 90以上指定すると壊れる
         start_lng = 135.7284317640296; //経度
       }
+
+      // ルームIDを画面に表示する処理
+      var roomid_wrapper = document.getElementById("roomid_wrapper");
+      roomid_wrapper.innerHTML = roomId;
       // ここまで
 
       //console.log('aaa');
@@ -641,14 +646,6 @@
     </script>
   </head>
   <body>
-    <!-- 2020/09/08 Ryo Omae -->
-    <div id="logout-panel">
-      <input
-        type="button"
-        value="ログアウト"
-        onclick="logoutFromRoom(DataBase, roomId, userId);"
-      />
-    </div>
     <div id="floating-panel">
       <input
         type="button"
