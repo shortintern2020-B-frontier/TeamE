@@ -8,9 +8,9 @@ import firebase from "firebase";
 Vue.config.productionTip = false
 
 var firebaseConfig = {
-  apiKey: "APIKEY",
+  apiKey: "AIzaSyD6VaOrWy9iANa9hJymbptL7YDC7PKZ6hM ",
   authDomain: "AUTHDOMAIN",
-  databaseURL: "DBURL",
+  databaseURL: "https://rakuten-intern2020-b5.firebaseio.com/",
   projectId: "PROJECTID",
   storageBucket: "BUCKET",
   messagingSenderId: "ID",

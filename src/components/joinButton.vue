@@ -24,18 +24,25 @@ export default {
   data: function () {
     return {};
   },
+  // mounted() {
+  //   let makeRoom = document.createElement('script')
+  //   makeRoom.setAttribute('src', '../../public/static/js/room.js')
+  // },
   methods: {
     makeNewRoom: function () {
       console.log(this.make_name);
       console.log('makeroom');
-      makeRoom(firebase.database);
+      var newRoomId = makeRoom(firebase.database());
+      console.log(newRoomId)
+
 
     },
     joinRoom: function () {
       console.log(this.join_name);
       console.log(this.join_roomid);
       console.log('joinroom');
-    }
+    },
+    makeRoom
   }
 }
 
