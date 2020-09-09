@@ -6,7 +6,7 @@
   <v-row id="flex-container">
     <v-col cols="3">
       <span class="font-weight-bold text-h4 pl-6">エリアから探す</span>
-      <v-card class="pb-2"  flat :key="すべて表示" v-on:click="region_choice=''">
+      <v-card class="pb-2"  flat v-on:click="triggerEvent('')">
         <v-img
           :src="allimage"
           class="white--text align-end"
@@ -16,7 +16,7 @@
           <v-card-title class="white--text align-end" v-text="'全て表示'"></v-card-title>
         </v-img>
       </v-card>
-      <v-card class="pb-2" v-for="region in regions" :key="region.region" :src="region.src" flat  v-on:click="region_choice=region.region; triggerEvent">
+      <v-card class="pb-2" v-for="region in regions" :key="region.region" :src="region.src" flat  @click="triggerEvent(region.region)">
         <v-img
           :src="region.src"
           class="white--text align-end"
@@ -31,9 +31,25 @@
     <v-divider vertical class="mt-2"></v-divider>
 
     <v-col cols="8">
-      <div v-if="filter.length">
+      <div v-if="filter==='notfound'">
+        パッケージが見つかりませんでした。
+      </div>
+      <div v-else-if="Object.keys(filter).length">
         <span class="packs font-weight-bold text-h4 pl-6">{{ region_choice }}</span>
         <v-divider class="mb-2" id="divider-top"></v-divider>
+          <v-card class="pb-2" v-for="(regionitem, index) in filter" :key="regionitem.package_name" :src="regionitem.package_image" flat>
+            <router-link :to="{ name: 'Detail',params: { id: index }}">
+            <v-img
+              :src="regionitem.package_image"
+              class="white--text align-end"
+              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+              height="500px"
+            >
+              <v-card-title class="white--text align-end" v-text="regionitem.package_name"></v-card-title>
+            </v-img>
+            <v-divider class="mt-2"></v-divider>
+            </router-link>
+          </v-card>
       </div>
       <div v-else>
       <span class="packs font-weight-bold text-h4 pl-6">パッケージ一覧</span>
@@ -79,11 +95,11 @@ export default {
 
 
   methods:{
-    triggerEvent:function(){
-      console.log(this.region_choice);
-      this.$emit('send',this.region_choice);
+    triggerEvent:function(re){
+      this.region_choice=re;
+      this.$emit('send-event',this.region_choice);
     }
-  }
+  },
 };
 </script>
 
@@ -95,3 +111,4 @@ export default {
   padding-left: 0;
 }
 </style>
+
