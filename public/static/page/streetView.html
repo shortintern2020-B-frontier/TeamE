@@ -1,97 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- @author ISSEI MIYAMOTO -->
-    <div class="drawer">
-      <input type="checkbox" id="drawer-check" class="drawer-hidden" />
-      <label for="drawer-check" class="drawer-open">
-        <span></span>
-      </label>
-
-      <div class="drawer-content">
-        <div class="tab-wrap">
-          <input
-            id="TAB-01"
-            type="radio"
-            name="TAB"
-            class="tab-switch"
-            checked="checked"
-          />
-          <label class="tab-label" for="TAB-01">ルーム情報</label>
-          <div class="tab-content">
-            <div class="content-container">
-              <div class="participant-container">
-                <p class="participant-title">参加者一覧</p>
-
-                <div class="members">
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>Ryo Omae</p>
-                  </div>
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>Meisho Kanaomi</p>
-                  </div>
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>Ryota Watanabe</p>
-                  </div>
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>Tomoharu Yanase</p>
-                  </div>
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>Kota Yukawa</p>
-                  </div>
-                  <div class="member-container">
-                    <img src="../assets/Okinawa.jpg" />
-                    <p>ISSEY MIYAMOTO</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="chara-container">
-                <p>文字サイズ</p>
-
-                <div class="font-container">
-                  <button type="button" class="bigger btn">大</button>
-                  <button type="button" class="smaller btn">小</button>
-                </div>
-              </div>
-
-              <div class="tourID-container">
-                <p class="id-title">ツアーID</p>
-
-                <div class="id-wrapper" >
-                  <p id="roomid_wrapper">xxxxxxxxxxx</p>
-                </div>
-                <!-- Ryo Omae -->
-                <button class="remove-btn" onclick="logoutFromRoom(DataBase, roomId, userId);">退出する</button> 
-              </div>
-            </div>
-          </div>
-          <input id="TAB-02" type="radio" name="TAB" class="tab-switch" />
-          <label class="tab-label" for="TAB-02">チャット情報</label>
-          <div class="tab-content">
-            <div class="chat-container">
-              <div class="messages-container" id="messageBody">
-                <div id="messages"></div>
-              </div>
-              <div class="send-container">
-                <textarea
-                  cols="1"
-                  rows="1"
-                  placeholder="メッセージを送信"
-                  id="message"
-                ></textarea>
-                <button id="send">送信</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <!-- Watanabe -->
     <title>Overlays Within Street View</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -114,26 +24,26 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyD6VaOrWy9iANa9hJymbptL7YDC7PKZ6hM",
-        authDomain: "rakuten-intern2020-b5.firebaseapp.com",
-        databaseURL: "https://rakuten-intern2020-b5.firebaseio.com",
-        projectId: "rakuten-intern2020-b5",
-        storageBucket: "rakuten-intern2020-b5.appspot.com",
-        messagingSenderId: "677223095236",
-        appId: "1:677223095236:web:683056011b10dc74c5e291"
-      };
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyD6VaOrWy9iANa9hJymbptL7YDC7PKZ6hM",
+      authDomain: "rakuten-intern2020-b5.firebaseapp.com",
+      databaseURL: "https://rakuten-intern2020-b5.firebaseio.com",
+      projectId: "rakuten-intern2020-b5",
+      storageBucket: "rakuten-intern2020-b5.appspot.com",
+      messagingSenderId: "677223095236",
+      appId: "1:677223095236:web:683056011b10dc74c5e291"
+    };
 
-      // Initialize Firebase
-      //Meisho.K 2020/9/07
-      firebase.initializeApp(firebaseConfig);
-      var DataBase = firebase.database();
-    </script>
+    // Initialize Firebase
+    //Meisho.K 2020/9/07
+    firebase.initializeApp(firebaseConfig);
+    var DataBase = firebase.database();
+  </script>
 
-    <style type="text/css">
-      /* Always set the map height explicitly to define the size of the div
+  <style type="text/css">
+    /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
         height: 100%;
@@ -145,6 +55,12 @@
         height: 100%;
         margin: 0;
         padding: 0;
+      }
+
+      #top-button {
+        position: absolute;
+        top: 0px;
+        left: 10%;
       }
 
       #floating-panel {
@@ -575,11 +491,6 @@
         start_lng = 135.7284317640296; //経度
       }
 
-      // ルームIDを画面に表示する処理
-      var roomid_wrapper = document.getElementById("roomid_wrapper");
-      roomid_wrapper.innerHTML = roomId;
-      // ここまで
-
       //console.log('aaa');
       function initMap() {
         const astorPlace = {
@@ -637,36 +548,147 @@
     </script>
   </head>
   <body>
-    <div id="floating-panel">
-      <input
-        type="button"
-        value="Toggle Street View"
-        onclick="toggleStreetView();"
-      />
-      <input type="button" value="Toggle Pins" onclick="togglePins();" />
-    </div>
-    <!-- 2020/9/8 Meisho.Kanaomi-->
-    <div id="avatar-panel">
-      <input
-        type="button"
-        value="normal"
-        onclick="toNormal();"/>
-      <input
-        type="button"
-        value="happy"
-        onclick="toHappy();"/>
+
+    <header>
+      <div id="header">
+        <!-- @author ISSEI MIYAMOTO -->
+        <div class="drawer">
+          <input type="checkbox" id="drawer-check" class="drawer-hidden" />
+          <label for="drawer-check" class="drawer-open">
+            <span></span>
+          </label>
+
+          <div class="drawer-content">
+            <div class="tab-wrap">
+              <input
+                id="TAB-01"
+                type="radio"
+                name="TAB"
+                class="tab-switch"
+                checked="checked"
+              />
+              <label class="tab-label" for="TAB-01">ルーム情報</label>
+              <div class="tab-content">
+                <div class="content-container">
+                  <div class="participant-container">
+                    <p class="participant-title">参加者一覧</p>
+
+                    <div class="members">
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>Ryo Omae</p>
+                      </div>
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>Meisho Kanaomi</p>
+                      </div>
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>Ryota Watanabe</p>
+                      </div>
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>Tomoharu Yanase</p>
+                      </div>
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>Kota Yukawa</p>
+                      </div>
+                      <div class="member-container">
+                        <img src="../assets/Okinawa.jpg" />
+                        <p>ISSEY MIYAMOTO</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="chara-container">
+                    <p>文字サイズ</p>
+
+                    <div class="font-container">
+                      <button type="button" class="bigger btn">大</button>
+                      <button type="button" class="smaller btn">小</button>
+                    </div>
+                  </div>
+
+                  <div class="tourID-container">
+                    <p class="id-title">ツアーID</p>
+
+                    <div class="id-wrapper" >
+                      <p id="roomid_wrapper">xxxxxxxxxxx</p>
+                    </div>
+                    <!-- Ryo Omae -->
+                    <button class="remove-btn" onclick="logoutFromRoom(DataBase, roomId, userId);">退出する</button> 
+                  </div>
+                </div>
+              </div>
+              <input id="TAB-02" type="radio" name="TAB" class="tab-switch" />
+              <label class="tab-label" for="TAB-02">チャット情報</label>
+              <div class="tab-content">
+                <div class="chat-container">
+                  <div class="messages-container" id="messageBody">
+                    <div id="messages"></div>
+                  </div>
+                  <div class="send-container">
+                    <textarea
+                      cols="1"
+                      rows="1"
+                      placeholder="メッセージを送信"
+                      id="message"
+                    ></textarea>
+                    <button id="send">送信</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="top-button">
+          <input
+          type="image"
+          value="top page"
+          onclick="location.href='/';"
+          src="../img/toppage.png"
+          />
+        </div>
+        <div id="floating-panel">
         <input
-        type="button"
-        value="sad"
-        onclick="toSad();"/>
-        <input
-        id="my_avatar_img"
-        type="image"
-        height=30pt
-        width=30pt
-        src="../img/normal.png"/>
+          type="button"
+          value="歩行画面に移行"
+          height=50pt
+          onclick="toggleStreetView();"
+        />
       </div>
-    </div>
+
+      <!-- 2020/9/8 Meisho.Kanaomi-->
+      <div id="avatar-panel">
+        <input
+          type="image"
+          value="normal"
+          onclick="toNormal();"
+          src="../img/emote/normal.png"/>
+        <input
+          type="image"
+          value="happy"
+          onclick="toHappy();"
+          src="../img/emote/happy.png"/>
+        <input
+          type="image"
+          value="sad"
+          onclick="toSad();"
+          src="../img/emote/sad.png"/>
+        <input
+          id="my_avatar_img"
+          type="image"
+          height=60pt
+          width=60pt
+          src="../img/normal.png"/>
+        </div>
+      </div>
+      </div>
+      
+    </header>
+    
+    
     <!-- <div> Message<br><textarea id="message" rows="3"></textarea><br>
       <br>
       <button id="send"> send </button>
