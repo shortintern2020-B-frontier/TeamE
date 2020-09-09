@@ -8,27 +8,28 @@ function getContent(database) {
   return contentRef;
 }
 
-function addContentToDatabase(database, contentData) {
+function addContentToDatabase(database) {
   var newContentRef = database.ref('')
 }
 
 //Ryota Watanabe 2020/09/07
-function SetContentMarkers(contentData, markers) {
+//fix bugs Meisho.Kanaomi 2020/09/09
+function SetContentMarkers(contentData) {
   //console.log(contentData);
-  Object.keys(contentData).forEach(function (key) {
+  Object.keys(contentData).forEach(element => {
     const newMarker = new google.maps.Marker({
       position: {
-        lat: contentData[key]["lat"],
-        lng: contentData[key]["lng"]
+        lat: contentData[element]["lat"],
+        lng: contentData[element]["lng"]
       },
       map,
       //Meisho.Kanaomi 2020/9/9
       icon: {
-        url: contentData[key]["img"],
+        url: contentData[element]["img"],
         scaledSize: new google.maps.Size(100, 100)
       },
-      title: contentData[key]["title"],
-      url: contentData[key]["url"]
+      title: contentData[element]["title"],
+      url: contentData[element]["url"]
     });
     //Meisho.kanaomi 2020/9/7
     content_markers.push(newMarker);
@@ -51,8 +52,9 @@ var contentTempData;
 contentRef.once('value', function (snapshot) {
   console.log('contentref once')
   contentTempData = snapshot.val();
-  SetContentMarkers(contentTempData, content_markers);
+  SetContentMarkers(contentTempData);
 })
+console.log(content_markers)
 //DBが更新されたときに呼び出される(更新処理に使う)
 // contentRef.on('value', function(snapshot) {
 //   console.log('contentref on');
