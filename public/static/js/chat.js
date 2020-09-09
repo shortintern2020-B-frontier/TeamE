@@ -2,7 +2,9 @@
 
 const send = document.getElementById("send");
 const message = document.getElementById("message");
+const msg=document.getElementById("messages");
 var commentid = "-MGgFpByYA0l9TQ_MTXb";
+var str="";
 
 const remove_comments = document.getElementById("remove_comments");
 
@@ -27,19 +29,47 @@ send.addEventListener('click',function(){
 });
 
 //コメントの削除
-remove_comments.addEventListener('click',function(){
-    console.log("remove all comments");
+// remove_comments.addEventListener('click',function(){
+//     console.log("remove all comments");
+//     Object.keys(chatData).forEach(function(key){
+//         //console.log("chat/"+roomId+"/"+key)
+//         DataBase.ref("chat/"+roomId+"/"+key).update({
+//             comment:null,
+//             date:null,
+//             name:null
+//         })
+//     })
+//     commentSize=0;
+// })
+
+//コメントの初期表示
+var chatRef=DataBase.ref("chat/"+roomId);
+chatRef.once('value',function(snapshot){
+    chatData=snapshot.val();
+
+    if(chatData==undefined) return;
+    
     Object.keys(chatData).forEach(function(key){
-        //console.log("chat/"+roomId+"/"+key)
-        DataBase.ref("chat/"+roomId+"/"+key).update({
-            comment:null,
-            date:null,
-            name:null
-        })
+        console.log("date:"+chatData[key]["date"]);
+        console.log("name:"+chatData[key]["name"]);
+        console.log("comment:"+chatData[key]["comment"]);
+        let str1 =
+            //   "<div class='message-item1'><div class='img-item'><img src=" +
+            //   v.icon +
+              "<div class='nameMessa'><div class='name-item'>" +
+              chatData[key]["name"] +
+              "</div><div class='content-item'>" +
+              chatData[key]["comment"] +
+              "</div></div><div class='time-item'>" +
+              chatData[key]["date"] +
+              "</div></div>";
+        str+=str1;
+        msg.innerHTML=str;
     })
+    
 })
 
-//コメントの表示更新機能(console出力)
+//コメントの表示更新機能
 var chatRef=DataBase.ref("chat/"+roomId);
 chatRef.on('value',function(snapshot){
     //console.log("chatRef:"+chatRef);
@@ -48,11 +78,21 @@ chatRef.on('value',function(snapshot){
 
     if(chatData==undefined) return;
     
-    Object.keys(chatData).forEach(function(key){
-        console.log("date:"+chatData[key]["date"]);
-        console.log("name:"+chatData[key]["name"]);
-        console.log("comment:"+chatData[key]["comment"]);
-    })
+    var AddedKey=Object.keys(chatData).slice(-1);
+    const msg=document.getElementById("messages");
+    let str1 =
+            //   "<div class='message-item1'><div class='img-item'><img src=" +
+            //   v.icon +
+              "<div class='nameMessa'><div class='name-item'>" +
+              chatData[AddedKey]["name"] +
+              "</div><div class='content-item'>" +
+              chatData[AddedKey]["comment"] +
+              "</div></div><div class='time-item'>" +
+              chatData[AddedKey]["date"] +
+              "</div></div>";
+    str+=str1;
+    msg.innerHTML=str;
+    //console.log("str1:"+str1)
 })
 
 
