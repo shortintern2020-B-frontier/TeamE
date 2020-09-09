@@ -18,6 +18,7 @@
 </template>
 
 <script>
+// @author 2020/09/09 Ryo Omae
 // import {makeRoom} from '../../public/static/js/room.js';
 import firebase from 'firebase';
 export default {
