@@ -15,7 +15,7 @@ send.addEventListener('click',function(){
     var mi = ("0"+now.getMinutes()).slice(-2);
     var ss = ("0"+now.getSeconds()).slice(-2);
 
-    DataBase.ref("chat/"+"roomid/"+commentid).update({
+    DataBase.ref("chat/"+"roomid/").push({
         comment:message.value,
         date:yyyy+"-"+mm+"-"+dd+" "+hh+":"+mi+":"+ss,
         name:userName
@@ -28,7 +28,7 @@ var chatRef=DataBase.ref("chat/roomid/");
 chatRef.on('value',function(snapshot){
     console.log("chatRef:"+chatRef);
     chatData=snapshot.val();
-    console.log("chatData:"+chatData);
+    //console.log("chatData:"+chatData);
     Object.keys(chatData).forEach(function(key){
         console.log("date:"+chatData[key]["date"]);
         console.log("name:"+chatData[key]["name"]);
