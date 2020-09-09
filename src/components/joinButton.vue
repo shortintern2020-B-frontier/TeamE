@@ -42,7 +42,15 @@ export default {
       console.log(this.join_roomid);
       console.log('joinroom');
     },
-    makeRoom
+    makeRoom: function () {
+      var roomRef = firebase.database().ref('room/');
+      var newRoomRef = roomRef.push();
+      var newRoomId = newRoomRef.key;
+      newRoomRef.set({
+          roomid: newRoomId
+      });
+      return newRoomId;
+    }
   }
 }
 
