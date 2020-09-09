@@ -1,9 +1,8 @@
 <template>
   <div class="home">
     <navbar />
-    <homeHero />
-    <packages v-bind:val='alldata' v-bind:filter='filtered' @send="parentMethod" />
-    {{ regioninfo }}
+    <homeHero v-bind:datas='alldata'/>
+    <packages v-bind:val='alldata' v-bind:filter='filtered' @send-event="parentMethod" />
   </div>
 </template>
 
@@ -26,7 +25,6 @@ export default {
   data:()=>({
     alldata: [],
     filtered: [],
-    search: [],
     regioninfo:'',
   }),
   mounted() {
@@ -35,7 +33,15 @@ export default {
   },
   methods: {
    parentMethod(region_choice) {
-    this.regioninfo = region_choice;
+     this.regioninfo=region_choice;
+     if(this.regioninfo!=''){
+     firebase.database().ref('/package').orderByChild('region').startAt(this.regioninfo).endAt(this.regioninfo).on('value',snapshot=>this.filtered=snapshot.val())
+     if(this.filtered===null){
+       this.filtered='notfound'
+     }
+   }else{
+     this.filtered=[];
+   }
    }
   }
 };
