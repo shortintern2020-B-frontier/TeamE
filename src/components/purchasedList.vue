@@ -1,13 +1,13 @@
-/**
- * @author Tomoharu Yanase
- */
+/** * @author Tomoharu Yanase */
 <template>
   <div class="purchase-container">
     <div class="title-container">
       <h6>事前購入済みリスト</h6>
     </div>
     <div class="detail-container">
-      <span class="mt-8 mb-8">旅行に出発する前に事前購入を済ませておくと、よりリアルな旅行体験を得ることができます。</span>
+      <span class="mt-8 mb-8"
+        >旅行に出発する前に事前購入を済ませておくと、よりリアルな旅行体験を得ることができます。</span
+      >
       <v-card
         v-for="product in packagedata.purchase_list"
         :key="product.product_name"
@@ -22,14 +22,22 @@
       >
         <v-list-item three-line>
           <v-list-item-content>
-            <v-list-item-title class="headline mb-1">{{ product.product_name }}</v-list-item-title>
-            <v-list-item-subtitle>¥{{ product.product_price }}</v-list-item-subtitle>
-            <v-list-item-subtitle>{{ product.product_detail }}</v-list-item-subtitle>
+            <v-list-item-title class="headline mb-1">{{
+              product.product_name
+            }}</v-list-item-title>
+            <v-list-item-subtitle
+              >¥{{ product.product_price }}</v-list-item-subtitle
+            >
+            <v-list-item-subtitle>{{
+              product.product_detail
+            }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
         <v-card-actions>
-          <v-btn class="ml-6" :href="product.product_url" target="_blank">楽天市場で購入</v-btn>
+          <v-btn class="ml-6" :href="product.product_url" target="_blank"
+            >楽天市場で購入</v-btn
+          >
         </v-card-actions>
       </v-card>
     </div>
@@ -38,7 +46,7 @@
 
 <script>
 export default {
-  props: ['packagedata']
+  props: ["packagedata"]
 };
 </script>
 

@@ -12,34 +12,38 @@
         </v-col>
       </v-row>
     </v-container>
-      <v-form ref="form" @submit.prevent>
-        <v-text-field
-          v-model="keyword"
-          background-color="white"
-          label="search"
-        ></v-text-field>
-      </v-form>
-      <transition>
+    <v-form ref="form" @submit.prevent>
+      <v-text-field
+        v-model="keyword"
+        background-color="white"
+        label="search"
+      ></v-text-field>
+    </v-form>
+    <transition>
       <div v-if="keyword.length">
         <v-row>
           <v-col cols="8">
             <v-card raised elevation="24" hover>
-            <v-card-title>検索結果</v-card-title>
-            <v-divider></v-divider>
-            <!--<transition-group name="anime-list">-->
+              <v-card-title>検索結果</v-card-title>
+              <v-divider></v-divider>
+              <!--<transition-group name="anime-list">-->
               <v-list rounded shaped transition="scroll-y-transition">
                 <transition-group name="anime-list">
-                <v-list-item v-for="item in searched" :key="item.package_name" :to="{ name: 'Detail',params: { id: item.package_id }}">
-                  {{ item.package_name }}
-                </v-list-item>
+                  <v-list-item
+                    v-for="item in searched"
+                    :key="item.package_name"
+                    :to="{ name: 'Detail', params: { id: item.package_id } }"
+                  >
+                    {{ item.package_name }}
+                  </v-list-item>
                 </transition-group>
               </v-list>
-            <!--</transition-group>-->
+              <!--</transition-group>-->
             </v-card>
           </v-col>
         </v-row>
       </div>
-      </transition>
+    </transition>
   </v-parallax>
 </template>
 
@@ -47,25 +51,26 @@
 export default {
   data() {
     return {
-      assetsImage: require('@/assets/homeHero.jpg'),
-      keyword:'',
+      assetsImage: require("@/assets/homeHero.jpg"),
+      keyword: ""
     };
   },
-  computed:{
-    searched: function(){
-      var items=[];
-      for(var i in this.datas){
-        var item=this.datas[i];
-        if(item.package_name.indexOf(this.keyword)!==-1 || item.region.indexOf(this.keyword)!==-1){
+  computed: {
+    searched: function() {
+      var items = [];
+      for (var i in this.datas) {
+        var item = this.datas[i];
+        if (
+          item.package_name.indexOf(this.keyword) !== -1 ||
+          item.region.indexOf(this.keyword) !== -1
+        ) {
           items.push(item);
         }
       }
       return items;
     }
   },
-  props:[
-    'datas',
-  ]
+  props: ["datas"]
 };
 </script>
 
@@ -74,7 +79,7 @@ export default {
   opacity: 0;
 }
 .v-enter-active {
-  transition: opacity 1s
+  transition: opacity 1s;
 }
 .v-enter-to {
   opacity: 1;
@@ -88,7 +93,6 @@ export default {
 .v-leave-to {
   opacity: 0;
 }
-
 
 .anime-list-enter {
   transform: translate(-100px, 0);
