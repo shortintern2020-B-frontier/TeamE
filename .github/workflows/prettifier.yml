@@ -7,7 +7,7 @@ on:
      - master 
 
 env:
- FILE_PATTERN: "**/*.{vue, js}"
+ FILE_PATTERN: "{public,src,dist}/**/*.{vue,js,html}"
 
 jobs:
  lint:
