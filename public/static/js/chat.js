@@ -52,54 +52,39 @@ chatRef.once("value", function(snapshot) {
   if (chatData == undefined) return;
 
   Object.keys(chatData).forEach(function(key) {
-    let str1 =
-      "<div class='nameMessa'>" +
-      "<div style='font-size:7px;position:relative;top:18px;display:flex;font-weight:bold;'>" +
-      "<div style='width:150px;word-wrap:break-word;'>" +
-      chatData[key]["name"] +
-      "</div>" +
-      "<div align='center' style='width:200px;color:#00008a;'>" +
-      chatData[key]["date"] +
-      "</div>" +
-      "</div>" +
-      "<p style='border-radius:10px;background-color:#f5f2f0;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
-      chatData[key]["comment"] +
-      "</p>" +
-      "</div>";
-    str += str1;
-    msg.innerHTML = str;
+    AddComment(key);
   });
-  chatHistory.scrollTop = chatHistory.scrollHeight;
 });
-
 
 //コメントの表示更新機能
 var chatRef = DataBase.ref("chat/" + roomId);
 chatRef.on("value", function(snapshot) {
-  //console.log("chatRef:"+chatRef);
   chatData = snapshot.val();
-  //console.log("chatData:"+chatData);
 
   if (chatData == undefined) return;
 
   var AddedKey = Object.keys(chatData).slice(-1);
+  AddComment(AddedKey);
+});
+
+function AddComment(ChatKey){
   const msg = document.getElementById("messages");
   let str1 =
     "<div class='nameMessa'>" +
       "<div style='font-size:7px;position:relative;top:18px;display:flex;font-weight:bold;'>" +
         "<div style='width:150px;word-wrap:break-word;'>" +
-        chatData[AddedKey]["name"] +
+        chatData[ChatKey]["name"] +
         "</div>" +
         "<div align='center' style='width:200px;color:#00008a;'>" +
-          chatData[AddedKey]["date"] +
+          chatData[ChatKey]["date"] +
         "</div>" +
       "</div>" +
       "<p style='border-radius:10px;background-color:#f5f2f0;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
-        chatData[AddedKey]["comment"] +
+        chatData[ChatKey]["comment"] +
       "</p>" +
     "</div>";
   str += str1;
   msg.innerHTML = str;
   //console.log("str1:"+str1)
   chatHistory.scrollTop = chatHistory.scrollHeight;
-});
+}
