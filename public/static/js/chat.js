@@ -60,12 +60,12 @@ chatRef.once('value',function(snapshot){
               "<div class='nameMessa'>"+
                 "<div style='font-size:7px;position:relative;top:18px;display:flex;font-weight:bold;'>" +
                     "<div style='width:150px;word-wrap:break-word;'>"+chatData[key]["name"] +"</div>"+
-                    "<div align='center' style='width:200px;'>"+chatData[key]["date"]+"</div>"+
+                    "<div align='center' style='width:200px;color:#00008a;'>"+chatData[key]["date"]+"</div>"+
                 "</div>"+
-                "<p style='border-radius:10px;background-color:deepskyblue;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
+                "<p style='border-radius:10px;background-color:#f5f2f0;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
                   chatData[key]["comment"] +
                 "</p>"+
-              "</div></div>";
+              "</div>";
         str+=str1;
         msg.innerHTML=str;
     })
@@ -84,15 +84,15 @@ chatRef.on('value',function(snapshot){
     var AddedKey=Object.keys(chatData).slice(-1);
     const msg=document.getElementById("messages");
     let str1 =
-            //   "<div class='message-item1'><div class='img-item'><img src=" +
-            //   v.icon +
-              "<div class='nameMessa'><div class='name-item'>" +
-              chatData[AddedKey]["name"] +
-              "</div><div class='content-item'>" +
-              chatData[AddedKey]["comment"] +
-              "</div></div><div class='time-item'>" +
-              chatData[AddedKey]["date"] +
-              "</div></div>";
+        "<div class='nameMessa'>"+
+            "<div style='font-size:7px;position:relative;top:18px;display:flex;font-weight:bold;'>" +
+                "<div style='width:150px;word-wrap:break-word;'>"+chatData[AddedKey]["name"] +"</div>"+
+                "<div align='center' style='width:200px;color:#00008a;'>"+chatData[AddedKey]["date"]+"</div>"+
+            "</div>"+
+            "<p style='border-radius:10px;background-color:#f5f2f0;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
+            chatData[AddedKey]["comment"] +
+            "</p>"+
+        "</div>";
     str+=str1;
     msg.innerHTML=str;
     //console.log("str1:"+str1)
