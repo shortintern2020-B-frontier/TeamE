@@ -64,9 +64,9 @@ export default {
         "&username=" +
         this.make_name +
         "&start_lat=" +
-        35.003843 + 
+        35.003843 +
         "&start_lng=" +
-        135.771980;
+        135.77198;
     },
     joinRoom: function() {
       console.log(this.join_name);
@@ -83,7 +83,7 @@ export default {
         "&username=" +
         this.join_name +
         "&start_lat=" +
-        35.003802 + 
+        35.003802 +
         "&start_lng=" +
         135.772209;
     }
