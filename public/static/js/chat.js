@@ -57,14 +57,14 @@ chatRef.once('value',function(snapshot){
         // console.log("name:"+chatData[key]["name"]);
         // console.log("comment:"+chatData[key]["comment"]);
         let str1 =
-            //   "<div class='message-item1'><div class='img-item'><img src=" +
-            //   v.icon +
-              "<div class='nameMessa'><div class='name-item'>" +
-              chatData[key]["name"] +
-              "</div><div class='content-item'>" +
-              chatData[key]["comment"] +
-              "</div></div><div class='time-item'>" +
-              chatData[key]["date"] +
+              "<div class='nameMessa'>"+
+                "<div style='font-size:7px;position:relative;top:18px;display:flex;font-weight:bold;'>" +
+                    "<div style='width:150px;word-wrap:break-word;'>"+chatData[key]["name"] +"</div>"+
+                    "<div align='center' style='width:200px;'>"+chatData[key]["date"]+"</div>"+
+                "</div>"+
+                "<p style='border-radius:10px;background-color:deepskyblue;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
+                  chatData[key]["comment"] +
+                "</p>"+
               "</div></div>";
         str+=str1;
         msg.innerHTML=str;
