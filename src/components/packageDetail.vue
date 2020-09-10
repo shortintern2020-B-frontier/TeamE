@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  props: ['packagedata']
+  props: ["packagedata"]
 };
 </script>
 

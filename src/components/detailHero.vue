@@ -1,6 +1,4 @@
-/**
- * @author Kota Yukawa
- */
+/** * @author Kota Yukawa */
 
 <template>
   <v-parallax dark v-bind:src="packagedata.package_image">
@@ -16,7 +14,7 @@
 
 <script>
 export default {
-  props: ['packagedata']
+  props: ["packagedata"]
 };
 </script>
 

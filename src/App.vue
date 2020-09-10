@@ -18,6 +18,10 @@
   margin-right: 12px;
 }
 
+.v-text-field input {
+  font-size: 0.5em;
+}
+
 /* #nav {
   padding: 30px;
 } */
