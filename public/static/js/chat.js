@@ -43,7 +43,6 @@ send.addEventListener("click", function() {
 //     commentSize=0;
 // })
 
-
 //コメントの初期表示
 var chatRef = DataBase.ref("chat/" + roomId);
 chatRef.once("value", function(snapshot) {
@@ -68,21 +67,21 @@ chatRef.on("value", function(snapshot) {
   AddComment(AddedKey);
 });
 
-function AddComment(ChatKey){
+function AddComment(ChatKey) {
   const msg = document.getElementById("messages");
   let str1 =
     "<div class='nameMessa'>" +
-      "<div style='font-size:7px;position:relative;top:18px;display:flex;font-weight:bold;'>" +
-        "<div style='width:150px;word-wrap:break-word;'>" +
-        chatData[ChatKey]["name"] +
-        "</div>" +
-        "<div align='center' style='width:200px;color:#00008a;'>" +
-          chatData[ChatKey]["date"] +
-        "</div>" +
-      "</div>" +
-      "<p style='border-radius:10px;background-color:#f5f2f0;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
-        chatData[ChatKey]["comment"] +
-      "</p>" +
+    "<div style='font-size:7px;position:relative;top:18px;display:flex;font-weight:bold;'>" +
+    "<div style='width:150px;word-wrap:break-word;'>" +
+    chatData[ChatKey]["name"] +
+    "</div>" +
+    "<div align='center' style='width:200px;color:#00008a;'>" +
+    chatData[ChatKey]["date"] +
+    "</div>" +
+    "</div>" +
+    "<p style='border-radius:10px;background-color:#f5f2f0;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
+    chatData[ChatKey]["comment"] +
+    "</p>" +
     "</div>";
   str += str1;
   msg.innerHTML = str;
