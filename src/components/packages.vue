@@ -117,7 +117,7 @@ export default {
       { region: "大阪", src: require("@/assets/Osaka.jpg") },
       { region: "沖縄", src: require("@/assets/Okinawa.jpg") }
     ],
-    region_choice: '',
+    region_choice: "",
     allimage: require("@/assets/allregion.png")
   }),
 

@@ -18,7 +18,7 @@
   margin-right: 12px;
 }
 
-.v-text-field input{
+.v-text-field input {
   font-size: 0.5em;
 }
 
