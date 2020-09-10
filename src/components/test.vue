@@ -9,7 +9,13 @@
 
     <div class="drawer-content">
       <div class="tab-wrap">
-        <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" />
+        <input
+          id="TAB-01"
+          type="radio"
+          name="TAB"
+          class="tab-switch"
+          checked="checked"
+        />
         <label class="tab-label" for="TAB-01">ルーム情報</label>
         <div class="tab-content">
           <div class="content-container">
@@ -82,7 +88,11 @@
               </div>
             </div>
             <div class="send-container">
-              <textarea cols="1" rows="1" placeholder="メッセージを送信"></textarea>
+              <textarea
+                cols="1"
+                rows="1"
+                placeholder="メッセージを送信"
+              ></textarea>
               <button>送信</button>
             </div>
           </div>
@@ -443,5 +453,4 @@
 }
 </style>
 
-<script>
-</script>
+<script></script>

@@ -6,103 +6,104 @@ var roomid_wrapper = document.getElementById("roomid_wrapper");
 roomid_wrapper.innerHTML = roomId;
 // ここまで
 
-
-{/* input: ref to database
-output: roomid */}
+{
+  /* input: ref to database
+output: roomid */
+}
 function makeRoom(database) {
-    var roomRef = database.ref('room/');
-    var newRoomRef = roomRef.push();
-    var newRoomId = newRoomRef.key;
-    newRoomRef.set({
-        roomid: newRoomId
-    });
-    return newRoomId;
+  var roomRef = database.ref("room/");
+  var newRoomRef = roomRef.push();
+  var newRoomId = newRoomRef.key;
+  newRoomRef.set({
+    roomid: newRoomId
+  });
+  return newRoomId;
 }
 
-{/* input: ref to database, roomid, username
-output: userid */}
-function addUserToRoom(database, roomId, name){
-    var roomRef = database.ref('room/'+roomId);
-    var newUserRef = roomRef.push();
-    var newUserId = newUserRef.key;
-    newUserRef.set({
-        userid: newUserId,
-        name: name,
-        lat: 45.0 ,
-        lng: 45.0 ,
-    });
-    return newUserId;
-
+{
+  /* input: ref to database, roomid, username
+output: userid */
+}
+function addUserToRoom(database, roomId, name) {
+  var roomRef = database.ref("room/" + roomId);
+  var newUserRef = roomRef.push();
+  var newUserId = newUserRef.key;
+  newUserRef.set({
+    userid: newUserId,
+    name: name,
+    lat: 45.0,
+    lng: 45.0
+  });
+  return newUserId;
 }
 
-function addContentToDatabase(img, lat, lng, title, url){
-    var roomRef = DataBase.ref('content/');
-    var newContentRef = roomRef.push();
-    var newContentId = newContentRef.key;
-    newContentRef.set({
-        img: img,
-        title: title,
-        lat: lat ,
-        lng: lng ,
-        url: url
-    });
-    return newContentId;
+function addContentToDatabase(img, lat, lng, title, url) {
+  var roomRef = DataBase.ref("content/");
+  var newContentRef = roomRef.push();
+  var newContentId = newContentRef.key;
+  newContentRef.set({
+    img: img,
+    title: title,
+    lat: lat,
+    lng: lng,
+    url: url
+  });
+  return newContentId;
 }
 
-function removeRoom(database, roomId){
-    var roomRef = database.ref('room/'+roomId);
-    roomRef.remove();
+function removeRoom(database, roomId) {
+  var roomRef = database.ref("room/" + roomId);
+  roomRef.remove();
 }
 
-function removeUserFromRoom(database, roomId, userId){
-    var roomRef = database.ref('room/'+roomId+'/'+userId);
-    roomRef.remove();
+function removeUserFromRoom(database, roomId, userId) {
+  var roomRef = database.ref("room/" + roomId + "/" + userId);
+  roomRef.remove();
 }
 
 // ユーザーを部屋から削除します。
 // 人数が0になった部屋は削除します。
-function logoutFromRoom(database, roomId, userId){
-    removeUserFromRoom(database, roomId, userId);
-    database.ref('room/'+roomId).once('value',function(parent){
-        if(parent.numChildren() <= 1){
-                console.log('remove room'+roomId);
-                removeRoom(database, roomId);
-                window.alert('ログアウトしました');
-                window.location.href="../../";
-        } else {
-            window.alert('ログアウトしました');
-            window.location.href="../../";
-        }
-        
-    })
+function logoutFromRoom(database, roomId, userId) {
+  removeUserFromRoom(database, roomId, userId);
+  database.ref("room/" + roomId).once("value", function(parent) {
+    if (parent.numChildren() <= 1) {
+      console.log("remove room" + roomId);
+      removeRoom(database, roomId);
+      window.alert("ログアウトしました");
+      window.location.href = "../../";
+    } else {
+      window.alert("ログアウトしました");
+      window.location.href = "../../";
+    }
+  });
 }
 
-function getUserNumberOfRoom(database, roomId){
-    var roomRef = database.ref('room/'+roomId);
-    let userData
-    roomRef.once('value').then(function(snapshot){
-        userData = snapshot.val();
-        // console.log('userdata', userData);
-        var userKeyList = Object.keys(userData);
-        userKeyList = userKeyList.filter(n => n != "roomid");
-        console.log(userKeyList.length);
-        return userKeyList.length;
-    });
+function getUserNumberOfRoom(database, roomId) {
+  var roomRef = database.ref("room/" + roomId);
+  let userData;
+  roomRef.once("value").then(function(snapshot) {
+    userData = snapshot.val();
+    // console.log('userdata', userData);
+    var userKeyList = Object.keys(userData);
+    userKeyList = userKeyList.filter(n => n != "roomid");
+    console.log(userKeyList.length);
+    return userKeyList.length;
+  });
 }
 
-function getUserFromRoom(database, roomId){
-    var roomRef = database.ref('room/'+roomId);
-    let userData
-    roomRef.once('value').then(function(snapshot){
-        userData = snapshot.val();
-        // console.log('userdata', userData);
-        var userKeyList = Object.keys(userData);
-        userKeyList = userKeyList.filter(n => n != "roomid");
-        // console.log(userKeyList);
-        var userList=[];
-        userKeyList.forEach(element => {
-            userList.push(userData[element]);
-        });
-        return userList;
+function getUserFromRoom(database, roomId) {
+  var roomRef = database.ref("room/" + roomId);
+  let userData;
+  roomRef.once("value").then(function(snapshot) {
+    userData = snapshot.val();
+    // console.log('userdata', userData);
+    var userKeyList = Object.keys(userData);
+    userKeyList = userKeyList.filter(n => n != "roomid");
+    // console.log(userKeyList);
+    var userList = [];
+    userKeyList.forEach(element => {
+      userList.push(userData[element]);
     });
+    return userList;
+  });
 }
