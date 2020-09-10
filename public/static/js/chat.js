@@ -43,6 +43,7 @@ send.addEventListener("click", function() {
 //     commentSize=0;
 // })
 
+
 //コメントの初期表示
 var chatRef = DataBase.ref("chat/" + roomId);
 chatRef.once("value", function(snapshot) {
