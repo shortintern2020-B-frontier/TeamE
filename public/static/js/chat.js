@@ -75,7 +75,7 @@ function AddComment(ChatKey) {
     "<div style='width:150px;word-wrap:break-word;'>" +
     chatData[ChatKey]["name"] +
     "</div>" +
-    "<div align='center' style='width:200px;color:#00008a;'>" +
+    "<div align='center' style='width:200px;color:#0000008a;'>" +
     chatData[ChatKey]["date"] +
     "</div>" +
     "</div>" +
