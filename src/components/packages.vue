@@ -90,7 +90,7 @@ export default {
       { region: "沖縄", src: require("@/assets/Okinawa.jpg") },
     ],
     region_choice: '',
-    allimage: require("@/assets/Okinawa.jpg")
+    allimage: require("@/assets/allregion.png")
   }),
 
 

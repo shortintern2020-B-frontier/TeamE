@@ -1,22 +1,29 @@
 /** * @author Kota Yukawa */
 
 <template>
+<div>
   <v-parallax dark v-bind:src="assetsImage">
     <v-container fluid>
       <v-row align="center" justify="center" align-content="center">
         <v-col class="text-center">
-          <h1 class="display-4 font-weight-bold mb-2 text-h2">VTour</h1>
-          <h4 class="title font-weight-bold text-h5">
+          <h1 class="display-4 font-weight-bold mb-2 text-h2 white--text" >VTour</h1>
+          <h4 class="title font-weight-bold text-h5 white--text">
             - コロナ渦における新たな旅行のあり方の提案 -
           </h4>
         </v-col>
       </v-row>
     </v-container>
-      <v-form ref="form" @submit.prevent>
+  </v-parallax>
+  <v-card flat class="pt-2 pr-5">
+      <v-form>
         <v-text-field
+          class="pt-3"
+          outlined
+          label="パッケージを検索"
+          @submit.prevent
           v-model="keyword"
           background-color="white"
-          label="search"
+          autofocus
         ></v-text-field>
       </v-form>
       <transition>
@@ -26,7 +33,6 @@
             <v-card raised elevation="24" hover>
             <v-card-title>検索結果</v-card-title>
             <v-divider></v-divider>
-            <!--<transition-group name="anime-list">-->
               <v-list rounded shaped transition="scroll-y-transition">
                 <transition-group name="anime-list">
                 <v-list-item v-for="item in searched" :key="item.package_name" :to="{ name: 'Detail',params: { id: item.package_id }}">
@@ -34,13 +40,14 @@
                 </v-list-item>
                 </transition-group>
               </v-list>
-            <!--</transition-group>-->
             </v-card>
           </v-col>
         </v-row>
       </div>
       </transition>
-  </v-parallax>
+  </v-card>
+    <v-divider></v-divider>
+</div>
 </template>
 
 <script>
@@ -51,6 +58,7 @@ export default {
       keyword:'',
     };
   },
+  //@auther Tomoharu Yanase-search function
   computed:{
     searched: function(){
       var items=[];
@@ -68,8 +76,13 @@ export default {
   ]
 };
 </script>
-
 <style scoped>
+h1{
+  text-shadow: 4px 5px 6px #000000;;
+}
+h4{
+  text-shadow: 4px 5px 6px #000000;;
+}
 .v-enter {
   opacity: 0;
 }

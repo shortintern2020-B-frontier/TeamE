@@ -27,6 +27,7 @@ export default {
     filtered: [],
     regioninfo:'',
   }),
+  //@auther Tomoharu Yanase
   mounted() {
     firebase
       .database()
