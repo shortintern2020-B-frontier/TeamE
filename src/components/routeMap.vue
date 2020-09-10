@@ -1,6 +1,4 @@
-/**
- * @author Kota Yukawa
- */
+/** * @author Kota Yukawa */
 
 <template>
   <div class="route-map">
@@ -8,14 +6,13 @@
       <h6>ルートマップ</h6>
     </div>
     <div class="detail-container">
-      <p><v-img :src="packagedata.route_image"/></p>
+      <p><v-img :src="packagedata.route_image" /></p>
     </div>
   </div>
-
 </template>
 <script>
 export default {
-  props: ['packagedata']
+  props: ["packagedata"]
 };
 </script>
 

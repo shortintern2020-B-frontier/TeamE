@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <!-- Watanabe -->
     <title>バーチャルツアー</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -17,35 +16,35 @@
 
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
-  
+
     <!-- // TODO: Replace the following with your app's Firebase project configuration -->
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyD6VaOrWy9iANa9hJymbptL7YDC7PKZ6hM",
-      authDomain: "rakuten-intern2020-b5.firebaseapp.com",
-      databaseURL: "https://rakuten-intern2020-b5.firebaseio.com",
-      projectId: "rakuten-intern2020-b5",
-      storageBucket: "rakuten-intern2020-b5.appspot.com",
-      messagingSenderId: "677223095236",
-      appId: "1:677223095236:web:683056011b10dc74c5e291"
-    };
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyD6VaOrWy9iANa9hJymbptL7YDC7PKZ6hM",
+        authDomain: "rakuten-intern2020-b5.firebaseapp.com",
+        databaseURL: "https://rakuten-intern2020-b5.firebaseio.com",
+        projectId: "rakuten-intern2020-b5",
+        storageBucket: "rakuten-intern2020-b5.appspot.com",
+        messagingSenderId: "677223095236",
+        appId: "1:677223095236:web:683056011b10dc74c5e291"
+      };
 
-    // Initialize Firebase
-    //Meisho.K 2020/9/07
-    firebase.initializeApp(firebaseConfig);
-    var DataBase = firebase.database();
-  </script>
+      // Initialize Firebase
+      //Meisho.K 2020/9/07
+      firebase.initializeApp(firebaseConfig);
+      var DataBase = firebase.database();
+    </script>
 
-  <style type="text/css">
-    /* Always set the map height explicitly to define the size of the div
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 93.8%;
       }
 
       #header {
@@ -82,8 +81,8 @@
       /*　Meisho.Kanaomi 2020.9.8 */
       /* Ryo Omae 2020/09/09 */
       #bottom-panel {
-        position : absolute;
-        bottom: 10px;
+        position: absolute;
+        bottom: 0px;
         left: 0;
         /* right: 0; */
         z-index: 5;
@@ -98,7 +97,7 @@
         padding-left: 10px;
       }
 
-      #walker{
+      #walker {
         position: absolute;
         right: 0px;
       }
@@ -465,7 +464,7 @@
         font-size: 12px;
       }
 
-      .verticalLine{
+      .verticalLine {
         border-left: thick solid rgba(54, 54, 54, 0);
       }
     </style>
@@ -499,7 +498,7 @@
         userId = "888888888";
       }
       if (userName === null) {
-        userName = "RakutenTarou";
+        userName = "RakutenTaro";
       }
 
       if ((start_lat === null) | (start_lng === null)) {
@@ -564,7 +563,6 @@
     </script>
   </head>
   <body>
-
     <header>
       <div id="header">
         <!-- @author ISSEI MIYAMOTO -->
@@ -629,11 +627,16 @@
                   <div class="tourID-container">
                     <p class="id-title">ツアーID</p>
 
-                    <div class="id-wrapper" >
+                    <div class="id-wrapper">
                       <p id="roomid_wrapper">xxxxxxxxxxx</p>
                     </div>
                     <!-- Ryo Omae -->
-                    <button class="remove-btn" onclick="logoutFromRoom(DataBase, roomId, userId);">退出する</button> 
+                    <button
+                      class="remove-btn"
+                      onclick="logoutFromRoom(DataBase, roomId, userId);"
+                    >
+                      退出する
+                    </button>
                   </div>
                 </div>
               </div>
@@ -660,44 +663,47 @@
         </div>
         <div id="top-button">
           <input
-          type="image"
-          value="top page"
-          onclick="location.href='/';"
-          src="../img/toppage.png"
+            type="image"
+            value="top page"
+            onclick="location.href='/';"
+            src="../img/toppage.png"
           />
         </div>
-        
-
+      </div>
       <!-- 2020/9/8 Meisho.Kanaomi-->
       <div id="bottom-panel">
         <div id="avatar-panel">
           <input
             type="image"
             value="normal"
-            height=60pt
-            width=60pt
+            height="60pt"
+            width="60pt"
             onclick="toNormal();"
-            src="../img/emote/normal.png"/>
+            src="../img/emote/normal.png"
+          />
           <input
             type="image"
             value="happy"
-            height=60pt
-            width=60pt
+            height="60pt"
+            width="60pt"
             onclick="toHappy();"
-            src="../img/emote/happy.png"/>
+            src="../img/emote/happy.png"
+          />
           <input
             type="image"
             value="sad"
-            height=60pt
-            width=60pt
+            height="60pt"
+            width="60pt"
             onclick="toSad();"
-            src="../img/emote/sad.png"/>
+            src="../img/emote/sad.png"
+          />
           <input
             id="my_avatar_img"
             type="image"
-            height=60pt
-            width=60pt
-            src="../img/normal.png"/>
+            height="60pt"
+            width="60pt"
+            src="../img/normal.png"
+          />
         </div>
         <div id="vline1" class="verticalLine"></div>
         <div id="floating-panel">
@@ -705,19 +711,14 @@
             id="walker"
             type="image"
             value="歩行画面に移行"
-            height=50pt
+            height="50pt"
             src="../img/walker.png"
             onclick="toggleStreetView();"
           />
         </div>
       </div>
-      
-      </div>
-      </div>
-      
     </header>
-    
-    
+
     <!-- <div> Message<br><textarea id="message" rows="3"></textarea><br>
       <br>
       <button id="send"> send </button>

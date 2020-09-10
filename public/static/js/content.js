@@ -4,12 +4,12 @@
 // コンテンツ取得処理
 // lng, lat, title, url
 function getContent(database) {
-  var contentRef = database.ref('content/');
+  var contentRef = database.ref("content/");
   return contentRef;
 }
 
 function addContentToDatabase(database) {
-  var newContentRef = database.ref('')
+  var newContentRef = database.ref("");
 }
 
 //Ryota Watanabe 2020/09/07
@@ -35,12 +35,12 @@ function SetContentMarkers(contentData) {
     content_markers.push(newMarker);
   });
   //urlを埋め込む
-  //Meisho Kanaomi 2020/9/4 
+  //Meisho Kanaomi 2020/9/4
   for (let i = 0; i < content_markers.length; i++) {
     //console.log(markers[i]);
-    google.maps.event.addListener(content_markers[i], 'click', (function (url) {
+    google.maps.event.addListener(content_markers[i], "click", function(url) {
       return window.open(content_markers[i].url);
-    }))
+    });
   }
 }
 
@@ -49,12 +49,12 @@ var contentRef = getContent(DataBase);
 var contentData;
 var contentTempData;
 //Markerの初期配置
-contentRef.once('value', function (snapshot) {
-  console.log('contentref once')
+contentRef.once("value", function(snapshot) {
+  console.log("contentref once");
   contentTempData = snapshot.val();
   SetContentMarkers(contentTempData);
-})
-console.log(content_markers)
+});
+console.log(content_markers);
 //DBが更新されたときに呼び出される(更新処理に使う)
 // contentRef.on('value', function(snapshot) {
 //   console.log('contentref on');

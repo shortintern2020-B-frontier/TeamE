@@ -35,9 +35,13 @@
             <v-divider></v-divider>
               <v-list rounded shaped transition="scroll-y-transition">
                 <transition-group name="anime-list">
-                <v-list-item v-for="item in searched" :key="item.package_name" :to="{ name: 'Detail',params: { id: item.package_id }}">
-                  {{ item.package_name }}
-                </v-list-item>
+                  <v-list-item
+                    v-for="item in searched"
+                    :key="item.package_name"
+                    :to="{ name: 'Detail', params: { id: item.package_id } }"
+                  >
+                    {{ item.package_name }}
+                  </v-list-item>
                 </transition-group>
               </v-list>
             </v-card>
@@ -54,8 +58,8 @@
 export default {
   data() {
     return {
-      assetsImage: require('@/assets/homeHero.jpg'),
-      keyword:'',
+      assetsImage: require("@/assets/homeHero.jpg"),
+      keyword: ""
     };
   },
   //@auther Tomoharu Yanase-search function
@@ -71,9 +75,7 @@ export default {
       return items;
     }
   },
-  props:[
-    'datas',
-  ]
+  props: ["datas"]
 };
 </script>
 <style scoped>
@@ -87,7 +89,7 @@ h4{
   opacity: 0;
 }
 .v-enter-active {
-  transition: opacity 1s
+  transition: opacity 1s;
 }
 .v-enter-to {
   opacity: 1;
@@ -101,7 +103,6 @@ h4{
 .v-leave-to {
   opacity: 0;
 }
-
 
 .anime-list-enter {
   transform: translate(-100px, 0);

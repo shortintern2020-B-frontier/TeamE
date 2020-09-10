@@ -25,8 +25,3 @@ div {
   color: black;
 }
 </style>
-
-
-
-
-
