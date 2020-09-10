@@ -50,47 +50,55 @@ chatRef.once("value", function(snapshot) {
   str = "";
   chatData = snapshot.val();
 
-    if(chatData==undefined) return;
-    
-    Object.keys(chatData).forEach(function(key){
-        // console.log("date:"+chatData[key]["date"]);
-        // console.log("name:"+chatData[key]["name"]);
-        // console.log("comment:"+chatData[key]["comment"]);
-        let str1 =
-              "<div class='nameMessa'>"+
-                "<div style='font-size:7px;position:relative;top:18px;display:flex;font-weight:bold;'>" +
-                    "<div style='width:150px;word-wrap:break-word;'>"+chatData[key]["name"] +"</div>"+
-                    "<div align='center' style='width:200px;color:#00008a;'>"+chatData[key]["date"]+"</div>"+
-                "</div>"+
-                "<p style='border-radius:10px;background-color:#f5f2f0;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
-                  chatData[key]["comment"] +
-                "</p>"+
-              "</div>";
-        str+=str1;
-        msg.innerHTML=str;
-    })
-    chatHistory.scrollTop = chatHistory.scrollHeight;
-})
+  if (chatData == undefined) return;
 
   Object.keys(chatData).forEach(function(key) {
     // console.log("date:"+chatData[key]["date"]);
     // console.log("name:"+chatData[key]["name"]);
     // console.log("comment:"+chatData[key]["comment"]);
     let str1 =
-        "<div class='nameMessa'>"+
-            "<div style='font-size:7px;position:relative;top:18px;display:flex;font-weight:bold;'>" +
-                "<div style='width:150px;word-wrap:break-word;'>"+chatData[AddedKey]["name"] +"</div>"+
-                "<div align='center' style='width:200px;color:#00008a;'>"+chatData[AddedKey]["date"]+"</div>"+
-            "</div>"+
-            "<p style='border-radius:10px;background-color:#f5f2f0;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
-            chatData[AddedKey]["comment"] +
-            "</p>"+
-        "</div>";
-    str+=str1;
-    msg.innerHTML=str;
-    //console.log("str1:"+str1)
-    chatHistory.scrollTop = chatHistory.scrollHeight;
-})
+      "<div class='nameMessa'>" +
+      "<div style='font-size:7px;position:relative;top:18px;display:flex;font-weight:bold;'>" +
+      "<div style='width:150px;word-wrap:break-word;'>" +
+      chatData[key]["name"] +
+      "</div>" +
+      "<div align='center' style='width:200px;color:#00008a;'>" +
+      chatData[key]["date"] +
+      "</div>" +
+      "</div>" +
+      "<p style='border-radius:10px;background-color:#f5f2f0;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
+      chatData[key]["comment"] +
+      "</p>" +
+      "</div>";
+    str += str1;
+    msg.innerHTML = str;
+  });
+  chatHistory.scrollTop = chatHistory.scrollHeight;
+});
+
+Object.keys(chatData).forEach(function(key) {
+  // console.log("date:"+chatData[key]["date"]);
+  // console.log("name:"+chatData[key]["name"]);
+  // console.log("comment:"+chatData[key]["comment"]);
+  let str1 =
+    "<div class='nameMessa'>" +
+    "<div style='font-size:7px;position:relative;top:18px;display:flex;font-weight:bold;'>" +
+    "<div style='width:150px;word-wrap:break-word;'>" +
+    chatData[AddedKey]["name"] +
+    "</div>" +
+    "<div align='center' style='width:200px;color:#00008a;'>" +
+    chatData[AddedKey]["date"] +
+    "</div>" +
+    "</div>" +
+    "<p style='border-radius:10px;background-color:#f5f2f0;width:200px;padding:1em;display:inline-block;vertical-align:top;'>" +
+    chatData[AddedKey]["comment"] +
+    "</p>" +
+    "</div>";
+  str += str1;
+  msg.innerHTML = str;
+  //console.log("str1:"+str1)
+  chatHistory.scrollTop = chatHistory.scrollHeight;
+});
 
 //コメントの表示更新機能
 var chatRef = DataBase.ref("chat/" + roomId);
