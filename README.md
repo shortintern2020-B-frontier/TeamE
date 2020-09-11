@@ -42,4 +42,7 @@ Please build the project first.
 firebase deploy
 ```
 
+### Service URL
+https://rakuten-intern2020-b5.web.app/#/
+
 
